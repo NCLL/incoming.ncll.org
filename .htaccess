@@ -1,0 +1,8 @@
+# disable directory listing
+Options All -Indexes
+ServerSignature Off
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^(.+)/$ $1.html [L]
+</IfModule>
