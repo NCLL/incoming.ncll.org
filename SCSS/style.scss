@@ -2,6 +2,7 @@
 
 $primary_color:    #334760;
 $secondary_color:  #3B3B3B;
+$accent_color:     #e44d26;
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
@@ -142,6 +143,27 @@ nav a:hover {
 .main aside {
     color: white;
     padding: 0px 5% 10px;
+}
+
+/* ==============
+    Forms
+   ============== */
+
+input,
+button {
+    display: block;
+    border: 0;
+    padding: .5em;
+    margin: .5em 0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: .3s ease all;
+}
+
+button {
+    background-color: $accent_color;
+    &:hover, &:focus { background-color: darken( $accent_color, 10% ); }
+    &:active { background-color: darken( $accent_color, 25% ); }
 }
 
 /* ==============
