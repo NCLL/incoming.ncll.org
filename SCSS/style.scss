@@ -1,5 +1,8 @@
 @import "normalize.scss";
 
+$primary_color:    #334760;
+$secondary_color:  #3B3B3B;
+
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
 html {
@@ -72,18 +75,18 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #e44d26;
+    border-bottom: 20px solid $secondary_color;
 }
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #e44d26;
+    border-top: 20px solid $secondary_color;
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #f16529;
+    background: $primary_color;
 }
 
 .title {
@@ -110,7 +113,7 @@ nav a {
     font-weight: bold;
 
     color: white;
-    background: #e44d26;
+    background: $primary_color;
 }
 
 nav a:hover,
