@@ -58,6 +58,7 @@ module.exports = function (grunt) {
             plugins: [
                 { removeViewBox: false },
                 { removeUselessStrokeAndFill: false },
+                { removeUselessDefs: false },
             ]
         },
         dist: {
