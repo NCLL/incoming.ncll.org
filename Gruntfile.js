@@ -6,9 +6,13 @@ module.exports = function (grunt) {
             files: "SCSS/*.scss",
             tasks: ['sass', 'postcss'],
         },
-        svg: {
+        svgIcons: {
             files: "SVG/raw/*.svg",
             tasks: ['svgmin', 'svgstore'],
+        },
+        svg: {
+            files: ["img/*.svg", "!img/*.min.svg",],
+            tasks: ['svgmin'],
         },
         icons: {
             files: "images/*",
