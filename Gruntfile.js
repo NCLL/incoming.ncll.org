@@ -35,13 +35,13 @@ module.exports = function (grunt) {
             ]
         },
         dist: {
-            src: 'style.css',
+            src: 'css/*.css',
         }
     },
     browserSync: {
         dev: {
             bsFiles: {
-                src : ['style.css', '*.html', '*.php', '**/*.js'],
+                src : ['*.css', '*.html', '*.php', '**/*.js'],
             },
             options: {
                 watchTask: true,
