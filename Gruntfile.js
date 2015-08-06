@@ -64,6 +64,15 @@ module.exports = function (grunt) {
                 dest: 'SVG/compressed',
             }],
         },
+        images: {
+            files: [{
+                expand: 'true',
+                cwd: 'img/',
+                src: '*.svg',
+                dest: 'img/',
+                ext: '.min.svg',
+            }],
+        },
     },
     svgstore: {
         options: {
