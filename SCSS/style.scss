@@ -49,20 +49,17 @@ textarea {
     resize: vertical;
 }
 
-.browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+address {
+    font-style: normal;
 }
-
 
 /* ===== Initializr Styles ==================================================
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */
 
 body {
-    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+    font: 16px/26px Helvetica, 'Helvetica Neue', Arial;
+    color: $secondary_color;
 }
 
 .wrapper {
@@ -70,9 +67,9 @@ body {
     margin: 0 5%;
 }
 
-/* ===================
-    ALL: Orange Theme
-   =================== */
+/* ==============
+    Header
+   ============== */
 
 .header-container {
     border-bottom: 20px solid $secondary_color;
@@ -93,8 +90,13 @@ body {
     color: white;
 }
 
+.logo {
+    width: 100%;
+    max-width: 500px;
+}
+
 /* ==============
-    MOBILE: Menu
+    Menu
    ============== */
 
 nav ul {
@@ -126,7 +128,7 @@ nav a:hover {
 }
 
 /* ==============
-    MOBILE: Main
+    Main
    ============== */
 
 .main {
@@ -142,36 +144,22 @@ nav a:hover {
     padding: 0px 5% 10px;
 }
 
+/* ==============
+    Footer
+   ============== */
+
 .footer-container footer {
     color: white;
     padding: 20px 0;
 }
 
 /* ===============
-    ALL: IE Fixes
+    IE Fixes
    =============== */
 
 .ie7 .title {
     padding-top: 20px;
 }
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================================================
    Media Queries
@@ -213,17 +201,6 @@ nav a:hover {
 }
 
 @media only screen and (min-width: 768px) {
-
-/* ====================
-    WIDE: CSS3 Effects
-   ==================== */
-
-    .header-container,
-    .main aside {
-        -webkit-box-shadow: 0 5px 10px #aaa;
-           -moz-box-shadow: 0 5px 10px #aaa;
-                box-shadow: 0 5px 10px #aaa;
-    }
 
 /* ============
     WIDE: Menu
