@@ -91,7 +91,6 @@ module.exports = function (grunt) {
   });
 
     grunt.loadNpmTasks('grunt-imageoptim');
-    grunt.loadNpmTasks('grunt-svg2png');
     grunt.loadNpmTasks('grunt-svgmin');
     grunt.loadNpmTasks('grunt-svgstore');
     grunt.loadNpmTasks('grunt-contrib-sass');
