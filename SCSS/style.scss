@@ -276,13 +276,14 @@ button {
 
     .main {
         .main-content {
-            float: left;
-            width: 55%;
+            clear: both;
+            width: 100%;
         }
 
         .form-container {
             float: right;
             width: 40%;
+            margin-bottom: 2em;
         }
     }
 }
