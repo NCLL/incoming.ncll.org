@@ -10,13 +10,9 @@ module.exports = function (grunt) {
             files: "SVG/raw/*.svg",
             tasks: ['svgmin', 'svgstore'],
         },
-        svg: {
-            files: ["img/*.svg", "!img/*.min.svg",],
-            tasks: ['svgmin'],
-        },
-        icons: {
-            files: "images/*",
-            tasks: ['imageoptim'],
+        images: {
+            files: ['img/*.{jpg,png,gif,svg}'],
+            tasks: ['newer:imagemin:all'],
         }
     },
     sass: {
@@ -53,32 +49,6 @@ module.exports = function (grunt) {
             }
         }
     },
-    svgmin: {
-        options: {
-            plugins: [
-                { removeViewBox: false },
-                { removeUselessStrokeAndFill: false },
-                { removeUselessDefs: false },
-            ]
-        },
-        dist: {
-            files: [{
-                expand: true,
-                cwd: 'SVG/raw',
-                src: '*.svg',
-                dest: 'SVG/compressed',
-            }],
-        },
-        images: {
-            files: [{
-                expand: 'true',
-                cwd: 'img/',
-                src: '*.svg',
-                dest: 'img/',
-                ext: '.min.svg',
-            }],
-        },
-    },
     svgstore: {
         options: {
             prefix : 'icon-', // This will prefix each ID
@@ -93,24 +63,32 @@ module.exports = function (grunt) {
             },
         },
     },
-    imageoptim: {
-//        svgIcons: {
-//            options: {
-//                imagealpha: true,
-//                jpegMini: false,
-//            },
-//            src: ['images/icons'],
-//        }
+    imagemin: {
+        dynamic: {
+            options: {
+                svgoPlugins: [
+                    { removeViewBox: false },
+                    { removeUselessStrokeAndFill: false },
+                    { removeUselessDefs: false },
+                ],
+            },
+            files: [{
+                expand: true,
+                cwd: 'img/',
+                src: ['*.{jpg,png,gif,svg}'],
+                dest: 'img/',
+            }],
+        },
     },
   });
 
-    grunt.loadNpmTasks('grunt-imageoptim');
-    grunt.loadNpmTasks('grunt-svgmin');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-svgstore');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-newer');
     grunt.registerTask('default', [
         'browserSync',
         'watch',
