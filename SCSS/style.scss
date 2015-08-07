@@ -54,6 +54,10 @@ address {
     font-style: normal;
 }
 
+img {
+    width: 100%;
+}
+
 /* ===== Initializr Styles ==================================================
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */
@@ -82,8 +86,7 @@ body {
 }
 
 .header-container,
-.footer-container,
-.main aside {
+.footer-container {
     background: $primary_color;
 }
 
@@ -137,16 +140,27 @@ nav a:hover {
 
     article h1 {
         font-size: 2em;
+        line-height: 1.625em;
     }
 
     &-container {
+        background: white no-repeat top center / contain;
     }
 
     aside,
     &-content { box-sizing: border-box; }
+
     aside {
+        background: rgba( darken( $primary_color, 5% ), 0.85 );
+        background-blend-mode: multiply;
+        color: white;
+        padding: 0px 5% 1em;
     }
+
     &-content {
+        border-top: white solid 1em;
+        padding: 0 5% 1em;
+        background-color: rgba(white, 0.8);
     }
 }
 
@@ -161,6 +175,7 @@ button {
     padding: .5em;
     margin: .5em 0;
     width: 100%;
+    border-radius: 5px;
     box-sizing: border-box;
     transition: .3s ease all;
 }
@@ -238,6 +253,10 @@ button {
     }
 }
 
+@media only screen and (max-width: 767px) {
+    .form-container { margin-top: 25%; }
+}
+
 @media only screen and (min-width: 768px) {
 
 /* ============
@@ -255,15 +274,15 @@ button {
     WIDE: Main
    ============ */
 
-        width: 57%;
     .main {
         .main-content {
             float: left;
+            width: 55%;
         }
 
-        width: 28%;
         .form-container {
             float: right;
+            width: 40%;
         }
     }
 }
