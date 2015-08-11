@@ -5,3 +5,5 @@
 /node_modules/
 style.css*
 /.sass-cache/
+/js/main.min.js
+/.gitignore
