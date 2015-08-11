@@ -7,6 +7,17 @@ var_dump($_POST);
 
 // variables
 $cost = 35;
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
+$email = $_POST['email'];
+$phoneNumber = $_POST['phoneNumber'];
+$phoneType = $_POST['phoneType'];
+$address = $_POST['address'];
+$address2 = $_POST['address2'];
+$city = $_POST['city'];
+$state = $_POST['state'];
+$postalCode = $_POST['postalCode'];
+$country = $_POST['country'];
 
 // require API libraries
 require_once('lib/utils.php');
@@ -18,20 +29,21 @@ $nsc = startEtapestrySession();
 // Define Account
 $account = array();
 $account["nameFormat"] = 1;
-$account["firstName"] = "Larry";
-$account["lastName"] = "Bird";
+$account["firstName"] = $firstName;
+$account["lastName"] = $lastName;
 $account["personaType"] = "Personal";
-$account["address"] = "125 S. Pennsylvania Street";
-$account["city"] = "Indianapolis";
-$account["state"] = "IN";
-$account["postalCode"] = "46204";
-$account["country"] = "US";
-$account["email"] = "larry.bird@pacers.com";
+$account["address"] = $address;
+$account["address2"] = $address2;
+$account["city"] = $city;
+$account["state"] = $state;
+$account["postalCode"] = $postalCode;
+$account["country"] = $country;
+$account["email"] = $email;
 
 // Define Phone
 $phone = array();
-$phone["type"] = "Voice";
-$phone["number"] = "(317) 817-2500";
+$phone["type"] = $phoneType;
+$phone["number"] = $phoneNumber;
 
 // Add Phone to Account (optional)
 $account["phones"] = array($phone);

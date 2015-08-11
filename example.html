@@ -34,14 +34,14 @@
                         <p>In addition to the <a href="http://www.ncll.org/get-involved" target="_blank">benefits of membership</a>, you’ll receive occasional emails with legal news and tips that will keep you informed.</p>
                         <fieldset>
                             <legend>Personal Information</legend>
-                            <label class="visuallyhidden" for="firstname">First Name</label>
-                            <input type="text" id="firstname" name="firstname" placeholder="John">
-                            <label class="visuallyhidden" for="lastname">Last Name</label>
-                            <input type="text" id="lastname" name="lastname" placeholder="Doe">
+                            <label class="visuallyhidden" for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="John">
+                            <label class="visuallyhidden" for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Doe">
                             <label class="visuallyhidden" for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="john.doe@example.com">
-                            <label class="visuallyhidden" for="phone">Phone Numbe</label>
-                            <input type="tel" id="phone" name="phone" placeholder="234-567-8901">
+                            <label class="visuallyhidden" for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="234-567-8901">
                             <label for="phoneTypeHome">Home<input type="radio" name="phoneType" value="Home" id="phoneTypeHome" /></label>
                             <label for="phoneTypeCell">Cell<input type="radio" name="phoneType" value="Cell" id="phoneTypeCell" /></label>
                             <label for="phoneTypeMinistry">Ministry<input type="radio" name="phoneType" value="Ministry" id="phoneTypeMinistry" /></label>
@@ -106,8 +106,9 @@
                                 <option value="WI">Wisconsin</option>
                                 <option value="WY">Wyoming</option>
                             </select>
-                            <label class="visuallyhidden" for="zip">ZIP Code</label>
-                            <input type="tel" id="zip" name="zip" placeholder="12345">
+                            <label class="visuallyhidden" for="postalCode">ZIP Code</label>
+                            <input type="tel" id="postalCode" name="postalCode" placeholder="12345">
+                            <input type="hidden" name="country" value="US" />
                         </fieldset>
                         <fieldset>
                             <legend>Payment Information</legend>
