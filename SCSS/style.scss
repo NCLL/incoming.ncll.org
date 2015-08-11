@@ -54,6 +54,16 @@ address {
     font-style: normal;
 }
 
+a {
+    color: inherit;
+    font-weight: 700;
+
+    &.tel {
+        text-decoration: none;
+        font-weight: inherit;
+    }
+}
+
 .main-image {
     width: 100%;
 }
