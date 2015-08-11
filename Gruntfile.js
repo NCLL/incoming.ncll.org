@@ -15,6 +15,14 @@ module.exports = function (grunt) {
             tasks: ['newer:imagemin:all'],
         }
     },
+    uglify: {
+        options: {
+            banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        },
+        build: {
+            dest: 'js/incoming.min.js': ['js/vendor/card.js'],
+        }
+    },
     sass: {
         dev: {
             files: {
@@ -82,11 +90,12 @@ module.exports = function (grunt) {
     },
   });
 
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-svgstore');
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-svgstore');
+    grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-newer');
     grunt.registerTask('default', [
