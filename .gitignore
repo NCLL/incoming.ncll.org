@@ -7,3 +7,4 @@ style.css*
 /.sass-cache/
 /js/main.min.js
 /.gitignore
+/lib/authentication.php

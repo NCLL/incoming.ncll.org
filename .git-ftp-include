@@ -2,3 +2,5 @@ css/style.css:SCSS/style.scss
 css/style.css.map:SCSS/style.scss
 
 js/main.min.js:vendor/card.js
+
+lib/authentication.php:lib/authentication.php
