@@ -29,7 +29,7 @@ function startEtapestrySession()
 {
   // Set login details and initial endpoint
   require('authentication.php');
-  $endpoint = "https://sna.etapestry.com/v2messaging/service?WSDL";
+  $endpoint = "https://sna.etapestry.com/v3messaging/service?WSDL";
 
   // Instantiate nusoap_client
   echo "Establishing NuSoap Client...";

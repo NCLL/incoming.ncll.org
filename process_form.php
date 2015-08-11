@@ -12,8 +12,11 @@ $nsc = startEtapestrySession();
 
 // Define Account
 $account = array();
+$account["nameFormat"] = 1;
 $account["name"] = "Larry Bird";
 $account["sortName"] = "Bird, Larry";
+$account["firstName"] = "Larry";
+$account["lastName"] = "Bird";
 $account["personaType"] = "Business";
 $account["address"] = "125 S. Pennsylvania Street";
 $account["city"] = "Indianapolis";
@@ -24,6 +27,7 @@ $account["email"] = "larry.bird@pacers.com";
 $account["webAddress"] = "www.pacers.com";
 $account["shortSalutation"] = "Larry";
 $account["longSalutation"] = "Mr. Bird";
+$account["envelopeSalutation"] = "Mr. Larry Bird";
 
 // Define Phone
 $phone = array();
