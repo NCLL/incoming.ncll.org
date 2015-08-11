@@ -24,7 +24,7 @@ module.exports = function (grunt) {
         },
         build: {
             files: {
-                'js/incoming.min.js': ['js/vendor/card.js'],
+                'js/main.min.js': ['js/vendor/card.js'],
             }
         }
     },
