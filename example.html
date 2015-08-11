@@ -24,13 +24,14 @@
             </header>
         </div>
 
-        <div class="main-container" style="background-image: url('/img/example-family.jpg');">
+        <div class="main-container">
+            <img class="main-image" src="/img/example-family.jpg" alt="family" />
             <div class="main wrapper clearfix">
 
                 <aside class="form-container">
                     <form method="post" action="process_form.php">
                         <h3>Sign Up</h3>
-                        <p>You’ll receive occasional emails with legal news and tips that will keep you informed.</p>
+                        <p>In addition to the <a href="http://www.ncll.org/get-involved" target="_blank">benefits of membership</a>, you’ll receive occasional emails with legal news and tips that will keep you informed.</p>
                         <fieldset>
                             <legend>Personal Information</legend>
                             <label class="visuallyhidden" for="firstname">First Name</label>
@@ -119,7 +120,7 @@
                 <article class="main-content">
                     <header>
                         <h1>Welcome, WORLD News Group subscribers!</h1>
-                        <img src="img/World-News-Group-logo.min.svg" alt="World News Group logo" title="World News Group" />
+                        <img class="advertiser-logo" src="img/World-News-Group-logo.min.svg" alt="World News Group logo" title="World News Group" />
                     </header>
                     <section>
                         <p>Qui robusta ristretto, as cup strong, id acerbic, single shot cup, rich, instant, decaffeinated french press beans sugar caffeine at filter crema to go dark at percolator. Single shot, roast medium, plunger pot cortado, whipped caffeine espresso coffee strong, dripper mazagran cortado, extraction eu mazagran so acerbic et con panna aromatic. Breve, cappuccino, chicory arabica spoon, kopi-luwak cup spoon barista eu spoon coffee spoon dark ristretto cup instant white. Brewed pumpkin spice body, est carajillo, eu french press, cream extraction strong spoon, irish id americano sugar spoon cup plunger pot. Acerbic frappuccino, grinder, breve to go sweet con panna, barista aged, crema, organic, in cappuccino wings carajillo flavour. Redeye con panna, aftertaste extra cream sweet dark blue mountain arabica caramelization, foam, skinny, acerbic, lungo latte coffee robusta cream latte.</p>
@@ -148,9 +149,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-        <script src="js/main.js"></script>
+        <script src="js/main.min.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

@@ -54,7 +54,7 @@ address {
     font-style: normal;
 }
 
-img {
+.main-image {
     width: 100%;
 }
 
@@ -76,13 +76,14 @@ body {
     Header
    ============== */
 
-.header-container {
-    border-bottom: 20px solid $secondary_color;
+.header-container,
+.main-image {
+    border-bottom: 1em solid $secondary_color;
 }
 
 .footer-container,
 .main aside {
-    border-top: 20px solid $secondary_color;
+    border-top: 1em solid $secondary_color;
 }
 
 .header-container,
@@ -136,7 +137,7 @@ nav a:hover {
    ============== */
 
 .main {
-    padding: 30px 0;
+    padding: 2em 0;
 
     article h1 {
         font-size: 2em;
@@ -151,8 +152,7 @@ nav a:hover {
     &-content { box-sizing: border-box; }
 
     aside {
-        background: rgba( darken( $primary_color, 5% ), 0.85 );
-        background-blend-mode: multiply;
+        background: $primary_color;
         color: white;
         padding: 0px 5% 1em;
     }
@@ -162,6 +162,10 @@ nav a:hover {
         padding: 0 5% 1em;
         background-color: rgba(white, 0.8);
     }
+}
+
+.advertiser-logo {
+    max-width: 100%;
 }
 
 /* ==============
@@ -202,7 +206,7 @@ button {
 
 .footer-container footer {
     color: white;
-    padding: 20px 0;
+    padding: 1em 0;
 
     a { color: white; }
 }
@@ -226,26 +230,6 @@ button {
 
 @media only screen and (min-width: 480px) {
 
-/* ====================
-    INTERMEDIATE: Menu
-   ==================== */
-
-    nav a {
-        float: left;
-        width: 27%;
-        margin: 0 1.7%;
-        padding: 25px 2%;
-        margin-bottom: 0;
-    }
-
-    nav li:first-child a {
-        margin-left: 0;
-    }
-
-    nav li:last-child a {
-        margin-right: 0;
-    }
-
 /* ========================
     INTERMEDIATE: IE Fixes
    ======================== */
@@ -259,37 +243,22 @@ button {
     }
 }
 
-@media only screen and (max-width: 767px) {
-    .form-container { margin-top: 25%; }
-}
-
 @media only screen and (min-width: 768px) {
-
-/* ============
-    WIDE: Menu
-   ============ */
-
-    .title { float: left; }
-
-    nav {
-        float: right;
-        width: 38%;
-    }
 
 /* ============
     WIDE: Main
    ============ */
 
     .main {
-        .main-content {
-            clear: both;
-            width: 100%;
-        }
+        .main-content { width: 100%; }
+
+        .advertiser-logo { max-width: 50% }
 
         .form-container {
             float: right;
             width: 40%;
             margin-bottom: 2em;
+            margin-left: 2em;
         }
     }
 }
