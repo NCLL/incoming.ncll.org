@@ -13,14 +13,19 @@ module.exports = function (grunt) {
         images: {
             files: ['img/*.{jpg,png,gif,svg}'],
             tasks: ['newer:imagemin:all'],
+        },
+        js: {
+            files: ['js/**.js'],
+            tasks: ['newer:uglify'],
         }
     },
     uglify: {
         options: {
-            banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
         build: {
-            dest: 'js/incoming.min.js': ['js/vendor/card.js'],
+            files: {
+                'js/incoming.min.js': ['js/vendor/card.js'],
+            }
         }
     },
     sass: {
