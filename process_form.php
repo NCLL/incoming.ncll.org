@@ -49,11 +49,14 @@ echo "addAccount Response: <pre>";
 print_r($addAccountResponse);
 echo "</pre>";
 
-// Define Payment
+// Define Gift
 $trans = array();
 $trans["accountRef"] = $addAccountResponse;
-$trans["pledgeRef"] = "INPUT_PLEDGE_REF";
+$trans["fund"] = "General";
 $trans["amount"] = $cost;
+
+// Define Object Name (*)
+$trans["eTapestryObjectName"] = "Gift";
 
 // Define CreditCard
 $cc = array();
@@ -66,20 +69,16 @@ $valuable = array();
 $valuable["type"] = 3;
 $valuable["creditCard"] = $cc;
 
-// Add Valuable to Payment
+// Add Valuable to Gift
 $trans["valuable"] = $valuable;
 
-// Define DefinedValue
-$dv = array();
-$dv["fieldName"] = "INPUT_FIELD_NAME";
-$dv["value"] = "INPUT_VALUE";
+// Define ProcessTransactionRequest
+$request = array();
+$request["transaction"] = $trans;
 
-// Add DefinedValue to Payment (optional)
-$trans["definedValues"] = array($dv);
-
-// Invoke addAndProcessPayment method
-echo "Calling addAndProcessPayment method...";
-$response = $nsc->call("addAndProcessPayment", array($trans, false));
+// Invoke processTransaction method
+echo "Calling processTransaction method...";
+$processTransactionResponse = $nsc->call("processTransaction", array($request));
 echo "Done<br><br>";
 
 // Did a soap fault occur?
@@ -87,7 +86,7 @@ checkStatus($nsc);
 
 // Output result
 echo "addAndProcessPayment Response: <pre>";
-print_r($response);
+print_r($processTransactionResponse);
 echo "</pre>";
 
 // Call logout method
