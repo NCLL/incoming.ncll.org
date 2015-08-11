@@ -199,6 +199,12 @@ input {
     color: $secondary_color;
 }
 
+input[type="radio"] {
+    display: inline-block;
+    width: auto;
+    margin: 0 1em 0 .5em;
+}
+
 select {
     color: $primary_color;
     height: 2.1em;
