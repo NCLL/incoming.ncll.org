@@ -28,8 +28,7 @@ function checkStatus($nsc)
 function startEtapestrySession()
 {
   // Set login details and initial endpoint
-  $loginId = "INPUT_LOGIN_ID";
-  $password = "INPUT_PASSWORD";
+  require('authentication.php');
   $endpoint = "https://sna.etapestry.com/v2messaging/service?WSDL";
 
   // Instantiate nusoap_client
