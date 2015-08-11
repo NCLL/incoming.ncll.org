@@ -5,6 +5,9 @@ $_POST = sanitize($_POST);
 // development debugging
 var_dump($_POST);
 
+// variables
+$cost = 35;
+
 // require API libraries
 require_once('lib/utils.php');
 require_once('lib/nusoap.php');
@@ -35,14 +38,55 @@ $account["phones"] = array($phone);
 
 // Invoke addAccount method
 echo "Calling addAccount method...";
-$response = $nsc->call("addAccount", array($account, false));
+$addAccountResponse = $nsc->call("addAccount", array($account, false));
 echo "Done<br><br>";
 
 // Did a soap fault occur?
 checkStatus($nsc);
 
 // Output result
-echo "Response: <pre>";
+echo "addAccount Response: <pre>";
+print_r($addAccountResponse);
+echo "</pre>";
+
+// Define Payment
+$trans = array();
+$trans["accountRef"] = $addAccountResponse;
+$trans["pledgeRef"] = "INPUT_PLEDGE_REF";
+$trans["amount"] = $cost;
+
+// Define CreditCard
+$cc = array();
+$cc["number"] = "9999888877776666";
+$cc["expirationMonth"] = 12;
+$cc["expirationYear"] = 2018;
+
+// Define Valuable
+$valuable = array();
+$valuable["type"] = 3;
+$valuable["creditCard"] = $cc;
+
+// Add Valuable to Payment
+$trans["valuable"] = $valuable;
+
+// Define DefinedValue
+$dv = array();
+$dv["fieldName"] = "INPUT_FIELD_NAME";
+$dv["value"] = "INPUT_VALUE";
+
+// Add DefinedValue to Payment (optional)
+$trans["definedValues"] = array($dv);
+
+// Invoke addAndProcessPayment method
+echo "Calling addAndProcessPayment method...";
+$response = $nsc->call("addAndProcessPayment", array($trans, false));
+echo "Done<br><br>";
+
+// Did a soap fault occur?
+checkStatus($nsc);
+
+// Output result
+echo "addAndProcessPayment Response: <pre>";
 print_r($response);
 echo "</pre>";
 
