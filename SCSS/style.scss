@@ -169,6 +169,7 @@ nav a:hover {
    ============== */
 
 input,
+select,
 button {
     display: block;
     border: 0;
@@ -182,6 +183,11 @@ button {
 
 input {
     color: $secondary_color;
+}
+
+select {
+    color: $primary_color;
+    height: 2.1em;
 }
 
 button {
