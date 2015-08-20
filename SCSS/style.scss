@@ -18,8 +18,7 @@ html {
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+    @extend ::-moz-selection;
 }
 
 hr {
@@ -87,7 +86,7 @@ body {
    ============== */
 
 .header-container,
-.main-image {
+.cta-container {
     border-bottom: 1em solid $secondary_color;
 }
 
@@ -107,44 +106,16 @@ body {
 
 .logo {
     width: 100%;
-    max-width: 500px;
-}
-
-/* ==============
-    Menu
-   ============== */
-
-nav {
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-    }
-
-    nav a {
-        display: block;
-        margin-bottom: 10px;
-        padding: 15px 0;
-
-        text-align: center;
-        text-decoration: none;
-        font-weight: bold;
-
-        color: white;
-        background: $primary_color;
-
-        &:hover,
-        &:visited {
-            color: white;
-        }
-
-        &:hover { text-decoration: underline; }
-    }
+    max-width: 300px;
 }
 
 /* ==============
     Main
    ============== */
+
+.cta-container {
+    background: no-repeat top center / cover;
+}
 
 .main {
     padding: 2em 0;
@@ -182,6 +153,13 @@ nav {
     Forms
    ============== */
 
+.main-form {
+    background-color: rgba($primary_color, 0.95);
+    padding: 1em;
+    margin: 1em;
+    color: white;
+}
+
 input,
 select,
 button {
@@ -197,12 +175,12 @@ button {
 
 input {
     color: $secondary_color;
-}
 
-input[type="radio"] {
-    display: inline-block;
-    width: auto;
-    margin: 0 1em 0 .5em;
+    &[type="radio"] {
+        display: inline-block;
+        width: auto;
+        margin: 0 1em 0 .5em;
+    }
 }
 
 select {
@@ -211,9 +189,14 @@ select {
 }
 
 button {
+    color: white;
     background-color: $accent_color;
     &:hover, &:focus { background-color: darken( $accent_color, 10% ); }
     &:active { background-color: darken( $accent_color, 25% ); }
+}
+
+fieldset {
+    .js &.address, .js &.payment { display: none; }
 }
 
 /* ==============
@@ -245,18 +228,6 @@ button {
    ========================================================================== */
 
 @media only screen and (min-width: 480px) {
-
-/* ========================
-    INTERMEDIATE: IE Fixes
-   ======================== */
-
-    nav ul li {
-        display: inline;
-    }
-
-    .oldie nav a {
-        margin: 0 0.7%;
-    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -269,26 +240,24 @@ button {
         .main-content { width: 100%; }
 
         .advertiser-logo { max-width: 50% }
+    }
 
-        .form-container {
-            float: right;
-            width: 40%;
-            margin-bottom: 2em;
-            margin-left: 2em;
-        }
+    .main-form {
+        width: 40%;
     }
 }
 
 @media only screen and (min-width: 1140px) {
 
 /* ===============
-    Maximal Width
+    Maximum Width
    =============== */
 
     .wrapper {
         width: 1026px; /* 1140px - 10% for margins */
         margin: 0 auto;
     }
+
 }
 
 /* ==========================================================================
