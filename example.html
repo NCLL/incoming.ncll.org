@@ -115,13 +115,14 @@
                     <fieldset class="payment">
                         <legend><h3>Payment Information</h3></legend>
                         <label class="visuallyhidden" for="cardnumber">Card Number</label>
-                        <input type="text" id="cardnumber" name="cardnumber" autocomplete="cc-name" placeholder="4111 1111 1111 1111">
+                        <input type="text" id="cardnumber" name="cardnumber" autocomplete="cc-name" placeholder="4111 1111 1111 1111" required>
                         <label class="visuallyhidden" for="cc-exp">Expiration Date</label>
-                        <input type="text" id="cc-exp" name="cc-exp" autocomplete="cc-exp" placeholder="01/20">
+                        <input type="text" id="cc-exp-month" name="cc-exp-month" autocomplete="cc-exp-month" placeholder="01" size="2" required>/
+                        <input type="text" id="cc-exp-year" name="cc-exp-year" autocomplete="cc-exp-year" placeholder="2020" size="4" required>
                         <label class="visuallyhidden" for="cvc">Verification Number</label>
-                        <input type="text" id="cvc" name="cvc" autocomplete="cc-csc" placeholder="123">
-                        <label for="paymentRecurring"><input type="radio" name="paymentSchedule" value="recurring" id="paymentRecurring" checked="checked" />Recurring yearly payment</label>
-                        <label for="paymentOneTime"><input type="radio" name="paymentSchedule" value="one-time" id="paymentOneTime" />One-time payment</label><br/>
+                        <input type="text" id="cvc" name="cvc" autocomplete="cc-csc" placeholder="123" required>
+                        <label class="radio" for="paymentRecurring"><input type="radio" name="paymentSchedule" value="recurring" id="paymentRecurring" checked="checked" />Recurring yearly payment</label>
+                        <label class="radio" for="paymentOneTime"><input type="radio" name="paymentSchedule" value="one-time" id="paymentOneTime" />One-time payment</label><br/>
                         <a class="button back">&larr; Back</a>
                         <button type="submit">Submit &rarr;</button>
                     </fieldset>
