@@ -210,7 +210,8 @@ h1, h2, h3, h4, h5, h6 {
 
 input,
 select,
-button {
+button,
+a.button {
     display: block;
     border: 0;
     padding: .5em;
@@ -236,9 +237,11 @@ select {
     height: 2.1em;
 }
 
-button {
-    color: white;
+button,
+a.button {
+    text-align: center;
     background-color: $accent_color;
+    cursor: pointer;
     &:hover, &:focus { background-color: darken( $accent_color, 10% ); }
     &:active { background-color: darken( $accent_color, 25% ); }
 

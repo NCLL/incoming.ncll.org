@@ -41,7 +41,7 @@
                         <label for="phoneTypeHome"><input type="radio" name="phoneType" value="Home" id="phoneTypeHome" />Home</label>
                         <label for="phoneTypeCell"><input type="radio" name="phoneType" value="Cell" id="phoneTypeCell" />Cell</label>
                         <label for="phoneTypeMinistry"><input type="radio" name="phoneType" value="Ministry" id="phoneTypeMinistry" />Ministry</label>
-                        <button class="next">Next &rarr;</button>
+                        <a class="button next">Next &rarr;</a>
                     </fieldset>
                     <fieldset class="address">
                         <legend><h3>Address</h3></legend>
@@ -109,8 +109,8 @@
                         <label class="visuallyhidden" for="postalCode">ZIP Code</label>
                         <input type="tel" id="postalCode" name="postalCode" placeholder="12345" required autocomplete="postal-code">
                         <input type="hidden" name="country" value="US" />
-                        <button class="back">&larr; Back</button>
-                        <button class="next">Next &rarr;</button>
+                        <a class="button back">&larr; Back</a>
+                        <a class="button next">Next &rarr;</a>
                     </fieldset>
                     <fieldset class="payment">
                         <legend><h3>Payment Information</h3></legend>
@@ -122,8 +122,8 @@
                         <input type="text" id="cvc" name="cvc" autocomplete="cc-csc" placeholder="123">
                         <label for="paymentRecurring"><input type="radio" name="paymentSchedule" value="recurring" id="paymentRecurring" checked="checked" />Recurring yearly payment</label>
                         <label for="paymentOneTime"><input type="radio" name="paymentSchedule" value="one-time" id="paymentOneTime" />One-time payment</label><br/>
-                        <button class="back">&larr; Back</button>
-                        <button>Submit &rarr;</button>
+                        <a class="button back">&larr; Back</a>
+                        <button type="submit">Submit &rarr;</button>
                     </fieldset>
                 </form>
             </section><!-- .form -->
