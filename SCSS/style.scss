@@ -208,6 +208,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .signup h2:first-child { margin-top: 0; }
 
+label.radio {
+    display: inline-block;
+    margin-right: 1em;
+}
+
 input,
 select,
 button,
@@ -231,11 +236,6 @@ input {
         width: auto;
         margin-right: .3em;
     }
-}
-
-label.radio {
-    display: inline-block;
-    margin-right: 1em;
 }
 
 select {
