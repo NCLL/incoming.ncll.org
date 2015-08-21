@@ -74,8 +74,13 @@ a {
    ========================================================================== */
 
 body {
-    font: 18px/1.625em Helvetica, 'Helvetica Neue', Arial;
+    font: 18px/1.625  'Quattrocento Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: $secondary_color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quattrocento', Georgia, serif;
+    font-weight: 600;
 }
 
 .wrapper {
@@ -123,8 +128,9 @@ body {
 
 .cta-headers {
     margin: 1em;
-    padding: 1em;
-    background-color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 1em rgba(0, 0, 0, .3);
+
+    h1:first-child{ margin-top: 0; }
 }
 
 .main {
@@ -170,7 +176,7 @@ body {
     color: white;
 }
 
-.signup h2 { margin-top: 0; }
+.signup h2:first-child { margin-top: 0; }
 
 input,
 select,
@@ -253,6 +259,8 @@ fieldset {
 }
 
 @media only screen and (max-width: 767px) {
+    h1, h2, h3, h4, h5, h6 { line-height: 1.3; }
+
     .cta-container { flex-wrap: wrap; }
 
     .cta-headers, .main-form {
