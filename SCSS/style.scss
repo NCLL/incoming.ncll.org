@@ -117,6 +117,14 @@ body {
 
 .cta-container {
     background: no-repeat top center / cover;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cta-headers {
+    margin: 1em;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .main {
@@ -155,16 +163,14 @@ body {
     Forms
    ============== */
 
-.form.wrapper {
-    min-height: 500px;
-}
-
 .main-form {
     background-color: rgba($primary_color, 0.95);
     padding: 1em;
     margin: 1em;
     color: white;
 }
+
+.signup h2 { margin-top: 0; }
 
 input,
 select,
@@ -246,6 +252,18 @@ fieldset {
 @media only screen and (min-width: 480px) {
 }
 
+@media only screen and (max-width: 767px) {
+    .cta-container { flex-wrap: wrap; }
+
+    .cta-headers, .main-form {
+        width: 100%;
+    }
+
+    .main-form { order: 2; }
+
+    .cta-headers { order: 1; }
+}
+
 @media only screen and (min-width: 768px) {
 
 /* ============
@@ -256,9 +274,10 @@ fieldset {
         .main-content { width: 100%; }
 
         .advertiser-logo { max-width: 50% }
+
     }
 
-    .main-form {
+    .cta-headers, .main-form {
         width: 40%;
     }
 }
