@@ -81,11 +81,17 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Quattrocento', Georgia, serif;
     font-weight: 600;
+    @media only screen and (max-width: 767px) { line-height: 1.3; }
 }
 
 .wrapper {
     width: 90%;
     margin: 0 5%;
+
+    @media only screen and (min-width: 1140px) {
+        width: 1026px; /* 1140px - 10% for margins */
+        margin: 0 auto;
+    }
 }
 
 /* ==============
@@ -124,6 +130,8 @@ h1, h2, h3, h4, h5, h6 {
     background: no-repeat top center / cover;
     display: flex;
     justify-content: space-around;
+
+    @media screen and (max-width: 767px) { flex-wrap: wrap; }
 }
 
 .cta-headers {
@@ -133,6 +141,19 @@ h1, h2, h3, h4, h5, h6 {
     color: $accent_color;
 
     h1:first-child{ margin-top: 0; }
+}
+
+@media screen and (max-width: 767px) {
+    .cta-headers, .main-form { width: 100%; }
+    .main-form { order: 2; }
+    .cta-headers { order: 1; }
+}
+
+@media only screen and (min-width: 768px) {
+    .cta-headers, .main-form {
+        width: 40%;
+        .no-flexbox & { float: left; }
+    }
 }
 
 .main {
@@ -160,11 +181,17 @@ h1, h2, h3, h4, h5, h6 {
         border-top: white solid 1em;
         padding: 0 5% 1em;
         background-color: rgba(white, 0.8);
+
+        @media only screen and (min-width: 768px) { width: 100%; }
     }
 }
 
 .advertiser-logo {
     max-width: 100%;
+    @media only screen and (min-width: 768px) {
+        max-width: 50%;
+        margin: 0 auto;
+    }
 }
 
 /* ==============
@@ -253,57 +280,10 @@ fieldset {
     padding-top: 20px;
 }
 
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-@media only screen and (min-width: 480px) {
-}
-
-@media only screen and (max-width: 767px) {
-    h1, h2, h3, h4, h5, h6 { line-height: 1.3; }
-
-    .cta-container { flex-wrap: wrap; }
-
-    .cta-headers, .main-form {
-        width: 100%;
-    }
-
-    .main-form { order: 2; }
-
-    .cta-headers { order: 1; }
-}
-
-@media only screen and (min-width: 768px) {
-
-/* ============
-    WIDE: Main
-   ============ */
-
-    .main {
-        .main-content { width: 100%; }
-
-        .advertiser-logo { max-width: 50% }
-
-    }
-
-    .cta-headers, .main-form {
-        width: 40%;
-        .no-flexbox & { float: left; }
-    }
-}
-
-@media only screen and (min-width: 1140px) {
-
-/* ===============
-    Maximum Width
-   =============== */
-
-    .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
-        margin: 0 auto;
-    }
-
+.lt-ie9 label.visuallyhidden {
+    position: relative;
+    height: auto;
+    width: auto;
 }
 
 /* ==========================================================================
@@ -334,12 +314,6 @@ fieldset {
         position: static;
         width: auto;
     }
-}
-
-.lt-ie9 label.visuallyhidden {
-    position: relative;
-    height: auto;
-    width: auto;
 }
 
 .invisible {
