@@ -29,14 +29,14 @@
                 <form class="signup" method="post" action="process_form.php">
                     <h2>Sign Up</h2>
                     <fieldset class="contact">
-                        <legend><h3>Contact Information</h3></legend>
-                        <label class="visuallyhidden" for="firstName">First Name</label>
+                        <legend class="visuallyhidden"><h3>Contact Information</h3></legend>
+                        <label for="firstName">First Name</label>
                         <input type="text" id="firstName" name="firstName" placeholder="John" required autocomplete="given-name">
-                        <label class="visuallyhidden" for="lastName">Last Name</label>
+                        <label for="lastName">Last Name</label>
                         <input type="text" id="lastName" name="lastName" placeholder="Doe" required autocomplete="family-name">
-                        <label class="visuallyhidden" for="email">Email</label>
+                        <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="john.doe@example.com" required autocomplete="email">
-                        <label class="visuallyhidden" for="phoneNumber">Phone Number</label>
+                        <label for="phoneNumber">Phone Number</label>
                         <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="234-567-8901" autocomplete="tel">
                         <label class="radio" for="phoneTypeHome"><input type="radio" name="phoneType" value="Home" id="phoneTypeHome" />Home</label>
                         <label class="radio" for="phoneTypeCell"><input type="radio" name="phoneType" value="Cell" id="phoneTypeCell" />Cell</label>
@@ -44,14 +44,14 @@
                         <a class="button next">Next &rarr;</a>
                     </fieldset>
                     <fieldset class="address">
-                        <legend><h3>Address</h3></legend>
-                        <label class="visuallyhidden" for="address">Address</label>
+                        <legend class="visuallyhidden"><h3>Address</h3></legend>
+                        <label for="address">Street</label>
                         <input type="text" id="address" name="address" placeholder="123 Anystreet" required autocomplete="address-line1">
-                        <label class="visuallyhidden" for="address2">Address 2</label>
+                        <label for="address2">Street 2</label>
                         <input type="text" id="address2" name="address2" placeholder="Suite A" autocomplete="address-line2">
-                        <label class="visuallyhidden" for="city">City</label>
+                        <label for="city">City</label>
                         <input type="text" id="city" name="city" placeholder="Sometown" required autocomplete="address-level2">
-                        <label class="visuallyhidden" for="state">State</label>
+                        <label for="state">State</label>
                         <select id="state" name="state" required autocomplete="address-level1">
                             <option>- Select One -</option>
                             <option value="AL">Alabama</option>
@@ -106,21 +106,21 @@
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
                         </select>
-                        <label class="visuallyhidden" for="postalCode">ZIP Code</label>
+                        <label for="postalCode">ZIP Code</label>
                         <input type="tel" id="postalCode" name="postalCode" placeholder="12345" required autocomplete="postal-code">
                         <input type="hidden" name="country" value="US" />
                         <a class="button back">&larr; Back</a>
                         <a class="button next">Next &rarr;</a>
                     </fieldset>
                     <fieldset class="payment">
-                        <legend><h3>Payment Information</h3></legend>
-                        <label class="visuallyhidden" for="cardnumber">Card Number</label>
+                        <legend class="visuallyhidden"><h3>Payment Information</h3></legend>
+                        <label for="cardnumber">Card Number</label>
                         <input type="text" id="cardnumber" name="cardnumber" autocomplete="cc-name" placeholder="4111 1111 1111 1111" required>
-                        <label class="visuallyhidden" for="cc-exp">Expiration Date</label>
+                        <label for="cc-exp">Expiration Date</label>
                         <input type="text" id="cc-exp-month" name="cc-exp-month" autocomplete="cc-exp-month" placeholder="01" size="2" required>/
                         <input type="text" id="cc-exp-year" name="cc-exp-year" autocomplete="cc-exp-year" placeholder="2020" size="4" required>
-                        <label class="visuallyhidden" for="cvc">Verification Number</label>
-                        <input type="text" id="cvc" name="cvc" autocomplete="cc-csc" placeholder="123" required>
+                        <label for="cvc">Verification Number</label>
+                        <input type="text" id="cvc" name="cvc" autocomplete="cc-csc" placeholder="123" required><br/>
                         <label class="radio" for="paymentRecurring"><input type="radio" name="paymentSchedule" value="recurring" id="paymentRecurring" checked="checked" />Recurring yearly payment</label>
                         <label class="radio" for="paymentOneTime"><input type="radio" name="paymentSchedule" value="one-time" id="paymentOneTime" />One-time payment</label><br/>
                         <a class="button back">&larr; Back</a>
