@@ -22,6 +22,7 @@ $( document ).ready( function() {
     });
 });
 
+// from https://github.com/dreamerslab/jquery.actual/
 /*! Copyright 2012, Ben Lin (http://dreamerslab.com/)
  * Licensed under the MIT License (LICENSE.txt).
  *
