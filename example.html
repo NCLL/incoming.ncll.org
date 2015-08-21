@@ -30,13 +30,13 @@
                     <fieldset class="contact">
                         <legend><h3>Contact Information</h3></legend>
                         <label class="visuallyhidden" for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" placeholder="John">
+                        <input type="text" id="firstName" name="firstName" placeholder="John" required autocomplete="given-name">
                         <label class="visuallyhidden" for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" placeholder="Doe">
+                        <input type="text" id="lastName" name="lastName" placeholder="Doe" required autocomplete="family-name">
                         <label class="visuallyhidden" for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="john.doe@example.com">
+                        <input type="email" id="email" name="email" placeholder="john.doe@example.com" required autocomplete="email">
                         <label class="visuallyhidden" for="phoneNumber">Phone Number</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="234-567-8901">
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="234-567-8901" autocomplete="tel">
                         <label for="phoneTypeHome"><input type="radio" name="phoneType" value="Home" id="phoneTypeHome" />Home</label>
                         <label for="phoneTypeCell"><input type="radio" name="phoneType" value="Cell" id="phoneTypeCell" />Cell</label>
                         <label for="phoneTypeMinistry"><input type="radio" name="phoneType" value="Ministry" id="phoneTypeMinistry" />Ministry</label>
@@ -45,13 +45,13 @@
                     <fieldset class="address">
                         <legend><h3>Address</h3></legend>
                         <label class="visuallyhidden" for="address">Address</label>
-                        <input type="text" id="address" name="address" placeholder="123 Anystreet">
+                        <input type="text" id="address" name="address" placeholder="123 Anystreet" required autocomplete="address-line1">
                         <label class="visuallyhidden" for="address2">Address 2</label>
-                        <input type="text" id="address2" name="address2" placeholder="Suite A">
+                        <input type="text" id="address2" name="address2" placeholder="Suite A" autocomplete="address-line2">
                         <label class="visuallyhidden" for="city">City</label>
-                        <input type="text" id="city" name="city" placeholder="Sometown">
+                        <input type="text" id="city" name="city" placeholder="Sometown" required autocomplete="address-level2">
                         <label class="visuallyhidden" for="state">State</label>
-                        <select id="state" name="state">
+                        <select id="state" name="state" required autocomplete="address-level1">
                             <option>- Select One -</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -106,7 +106,7 @@
                             <option value="WY">Wyoming</option>
                         </select>
                         <label class="visuallyhidden" for="postalCode">ZIP Code</label>
-                        <input type="tel" id="postalCode" name="postalCode" placeholder="12345">
+                        <input type="tel" id="postalCode" name="postalCode" placeholder="12345" required autocomplete="postal-code">
                         <input type="hidden" name="country" value="US" />
                         <button class="back">&larr; Back</button>
                         <button class="next">Next &rarr;</button>
@@ -114,11 +114,11 @@
                     <fieldset class="payment">
                         <legend><h3>Payment Information</h3></legend>
                         <label class="visuallyhidden" for="cardnumber">Card Number</label>
-                        <input type="text" id="cardnumber" name="cardnumber" placeholder="4111 1111 1111 1111">
+                        <input type="text" id="cardnumber" name="cardnumber" autocomplete="cc-name" placeholder="4111 1111 1111 1111">
                         <label class="visuallyhidden" for="cc-exp">Expiration Date</label>
-                        <input type="text" id="cc-exp" name="cc-exp" placeholder="01/20">
+                        <input type="text" id="cc-exp" name="cc-exp" autocomplete="cc-exp" placeholder="01/20">
                         <label class="visuallyhidden" for="cvc">Verification Number</label>
-                        <input type="text" id="cvc" name="cvc" placeholder="123">
+                        <input type="text" id="cvc" name="cvc" autocomplete="cc-csc" placeholder="123">
                         <label for="paymentRecurring"><input type="radio" name="paymentSchedule" value="recurring" id="paymentRecurring" checked="checked" />Recurring yearly payment</label>
                         <label for="paymentOneTime"><input type="radio" name="paymentSchedule" value="one-time" id="paymentOneTime" />One-time payment</label><br/>
                         <button class="back">&larr; Back</button>
