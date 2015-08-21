@@ -229,8 +229,13 @@ input {
     &[type="radio"] {
         display: inline-block;
         width: auto;
-        margin: 0 .3em 0 1em;
+        margin-right: .3em;
     }
+}
+
+label.radio {
+    display: inline-block;
+    margin-right: 1em;
 }
 
 select {
