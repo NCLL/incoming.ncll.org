@@ -336,6 +336,12 @@ fieldset {
     }
 }
 
+.lt-ie9 label.visuallyhidden {
+    position: relative;
+    height: auto;
+    width: auto;
+}
+
 .invisible {
     visibility: hidden;
 }
