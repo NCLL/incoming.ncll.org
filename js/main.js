@@ -8,7 +8,7 @@ $( document ).ready( function() {
         var $nextHeight = $( this ).parent( 'fieldset' ).next().actual( 'height' );
         $( '.signup' ).animate( { height: $formHeight - $thisHeight + $nextHeight } );
         $( this ).parent( 'fieldset' ).fadeOut(300, function() {
-            $( this ).next().fadeIn();
+            $( this ).next().fadeIn().children( 'input' ).first().focus();
         });
     });
     $( 'form' ).on( 'click', '.back', function( event ) {
@@ -17,7 +17,7 @@ $( document ).ready( function() {
         var $prevHeight = $( this ).parent( 'fieldset' ).prev().actual( 'height' );
         $( '.signup' ).animate( { height: $formHeight - $thisHeight + $prevHeight } );
         $( this ).parent( 'fieldset' ).fadeOut(300, function() {
-            $( this ).prev().fadeIn();
+            $( this ).prev().fadeIn().children( 'input' ).first().focus();
         });
     });
 });
