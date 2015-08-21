@@ -289,10 +289,12 @@ fieldset {
     padding-top: 20px;
 }
 
-.lt-ie9 label.visuallyhidden {
-    position: relative;
-    height: auto;
-    width: auto;
+.ie9, .lt-ie9 {
+    label.visuallyhidden {
+        position: relative;
+        height: auto;
+        width: auto;
+    }
 }
 
 /* ==========================================================================
