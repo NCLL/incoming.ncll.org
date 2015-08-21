@@ -30,7 +30,7 @@
                 <form class="signup" method="post" action="process_form.php">
                     <h2>Sign Up</h2>
                     <fieldset class="contact">
-                        <legend>Contact Information</legend>
+                        <legend><h3>Contact Information</h3></legend>
                         <label class="visuallyhidden" for="firstName">First Name</label>
                         <input type="text" id="firstName" name="firstName" placeholder="John">
                         <label class="visuallyhidden" for="lastName">Last Name</label>
@@ -39,13 +39,13 @@
                         <input type="email" id="email" name="email" placeholder="john.doe@example.com">
                         <label class="visuallyhidden" for="phoneNumber">Phone Number</label>
                         <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="234-567-8901">
-                        <label for="phoneTypeHome">Home<input type="radio" name="phoneType" value="Home" id="phoneTypeHome" /></label>
-                        <label for="phoneTypeCell">Cell<input type="radio" name="phoneType" value="Cell" id="phoneTypeCell" /></label>
-                        <label for="phoneTypeMinistry">Ministry<input type="radio" name="phoneType" value="Ministry" id="phoneTypeMinistry" /></label>
+                        <label for="phoneTypeHome"><input type="radio" name="phoneType" value="Home" id="phoneTypeHome" />Home</label>
+                        <label for="phoneTypeCell"><input type="radio" name="phoneType" value="Cell" id="phoneTypeCell" />Cell</label>
+                        <label for="phoneTypeMinistry"><input type="radio" name="phoneType" value="Ministry" id="phoneTypeMinistry" />Ministry</label>
                         <button class="next">Next &rarr;</button>
                     </fieldset>
                     <fieldset class="address">
-                        <legend>Address</legend>
+                        <legend><h3>Address</h3></legend>
                         <label class="visuallyhidden" for="address">Address</label>
                         <input type="text" id="address" name="address" placeholder="123 Anystreet">
                         <label class="visuallyhidden" for="address2">Address 2</label>
@@ -114,13 +114,15 @@
                         <button class="next">Next &rarr;</button>
                     </fieldset>
                     <fieldset class="payment">
-                        <legend>Payment Information</legend>
+                        <legend><h3>Payment Information</h3></legend>
                         <label class="visuallyhidden" for="cardnumber">Card Number</label>
                         <input type="text" id="cardnumber" name="cardnumber" placeholder="4111 1111 1111 1111">
                         <label class="visuallyhidden" for="cc-exp">Expiration Date</label>
                         <input type="text" id="cc-exp" name="cc-exp" placeholder="01/20">
                         <label class="visuallyhidden" for="cvc">Verification Number</label>
                         <input type="text" id="cvc" name="cvc" placeholder="123">
+                        <label for="paymentRecurring"><input type="radio" name="paymentSchedule" value="recurring" id="paymentRecurring" checked="checked" />Recurring yearly payment</label>
+                        <label for="paymentOneTime"><input type="radio" name="paymentSchedule" value="one-time" id="paymentOneTime" />One-time payment</label><br/>
                         <button class="back">&larr; Back</button>
                         <button>Submit &rarr;</button>
                     </fieldset>
