@@ -208,9 +208,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .signup h2:first-child { margin-top: 0; }
 
-label.radio {
-    display: inline-block;
-    margin-right: 1em;
+label {
+    &.radio {
+        display: inline-block;
+        margin-right: 1em;
+    }
+    + input, + input + input, + select { margin-top: 0; }
+
+    &[for="cc-exp"], &[for="cvc"] { display: block; }
 }
 
 input,
@@ -234,7 +239,7 @@ input {
     &[type="radio"] {
         display: inline-block;
         width: auto;
-        margin-right: .3em;
+        margin-right: .5em;
     }
 }
 
@@ -258,6 +263,13 @@ a.button {
 
 fieldset {
     .js &.address, .js &.payment { display: none; }
+}
+
+#cc-exp-month { margin-right: .25em; }
+
+#cc-exp-month, #cc-exp-year, #cvc {
+    width: 4em;
+    display: inline-block;
 }
 
 ::-webkit-input-placeholder { color: $placeholder_color; }
