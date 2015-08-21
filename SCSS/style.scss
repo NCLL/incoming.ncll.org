@@ -152,6 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 @media only screen and (min-width: 768px) {
     .cta-headers, .main-form {
         width: 40%;
+        max-width: 500px;
         .no-flexbox & { float: left; }
     }
 }
