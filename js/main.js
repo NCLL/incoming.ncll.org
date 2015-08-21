@@ -1,4 +1,4 @@
-
+// handle forward/back buttons
 $( document ).ready( function() {
     $( 'form' ).on( 'click', '.next, .back', function( event ) {
         event.preventDefault();
@@ -9,7 +9,7 @@ $( document ).ready( function() {
         var $nextHeight = $( this ).parent( 'fieldset' ).next().actual( 'height' );
         $( '.signup' ).animate( { height: $formHeight - $thisHeight + $nextHeight } );
         $( this ).parent( 'fieldset' ).fadeOut(300, function() {
-            $( this ).next().fadeIn().children( 'input' ).first().focus();
+            $( this ).next().fadeIn().children( 'input' ).first().focus().select();
         });
     });
     $( 'form' ).on( 'click', '.back', function( event ) {
@@ -18,7 +18,7 @@ $( document ).ready( function() {
         var $prevHeight = $( this ).parent( 'fieldset' ).prev().actual( 'height' );
         $( '.signup' ).animate( { height: $formHeight - $thisHeight + $prevHeight } );
         $( this ).parent( 'fieldset' ).fadeOut(300, function() {
-            $( this ).prev().fadeIn().children( 'input' ).first().focus();
+            $( this ).prev().fadeIn().children( 'input' ).first().focus().select();
         });
     });
 });
