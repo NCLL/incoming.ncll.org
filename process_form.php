@@ -120,14 +120,38 @@ echo "</pre>";
 // Call logout method
 stopEtapestrySession($nsc);
 
-echo 'Sending email...<br/>';
-//send_notification( $account );
-send_email_summary( array_merge( $account, $request ), $notification_address );
-echo 'Done sending email<br/>';
+echo 'Sending email...';
+send_email_summary( array_merge( $account, $request ), $notification_address, $checkDuplicatesResponse, $addAccountResponse, $processTransactionResponse );
+echo 'Done<br><br>';
 
 
 // send summary email
-function send_email_summary( $data, $notification_address ) {
+function send_email_summary( $data, $notification_address, $checkDuplicatesResponse, $addAccountResponse, $processTransactionResponse ) {
+
+    // set up message content
+    $message_content .= '<h1>New NCLL Account</h1>';
+    $message_content .= '<p>Generated from ' . $_SERVER['HTTP_REFERER'] . ' page</p>';
+
+    if ( count( $checkDuplicatesResponse ) !== 1 ) {
+        $message_content .= '<h2>Possible duplicate accounts&hellip;</h2>';
+        $message_content .= '<p>A new account was created to be safe. Please manually check for other accounts matching this name, email address, phone, and/or address.</p>';
+    }
+
+    $message_content .= '<h2>Personal Information</h2>';
+    $message_content .= '<p><strong>Name:</strong> ' . $data['firstName'] . ' ' . $data['lastName'] . '<br/>';
+    $message_content .= '<strong>Address:</strong> ' . $data['address'] . '<br/>';
+    if ( $data['address2'] ) { $message_content .= $data['address2'] . '<br/>'; }
+    $message_content .= '<strong>City/State/Zip:</strong> ' . $data['city'] . ', ' . $data['state'] . ' ' . $data['postalCode'] . '<br/>';
+    $message_content .= '<strong>Email:</strong> ' . $data['email'] . '<br/>';
+    $message_content .= '<strong>Phone:</strong> ' . $data['phones'][0]['number'] . ' (' . $data['phones'][0]['type'] . ')' . '<br/>';
+    $message_content .= '<strong>Account Reference Number:</strong> ' . $addAccountResponse . '</p>';
+
+    $message_content .= '<h2>Transaction Information</h2>';
+    $message_content .= '<p><strong>Amount:</strong> $' . $data['transaction']['amount'] . '<br/>';
+    $message_content .= '<strong>Fund:</strong> ' . $data['transaction']['fund'] . '<br/>';
+    $message_content .= '<strong>Donation Reference Number:</strong> ' . $processTransactionResponse . '</p>';
+
+    // set up and send email via Mailgun
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC );
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -136,9 +160,10 @@ function send_email_summary( $data, $notification_address ) {
     require( 'lib/authentication-curl.php' ); // curl_setopt($ch, CURLOPT_USERPWD, 'api:key-sample');
     curl_setopt( $ch, CURLOPT_POSTFIELDS,
         array('from' => $data['firstName'] . ' ' . $data['lastName'] . ' <' . $data['email'] . '>',
-              'to' => $notification_address,
-              'text' => print_r( $data, true ) ) );
-              'subject' => 'New Account',
+            'to' => $notification_address,
+            'subject' => 'New Account',
+            'html' => print_r( $message_content, true )
+        ) );
     $result = curl_exec( $ch );
     curl_close( $ch );
     return $result;
