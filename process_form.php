@@ -10,17 +10,6 @@ var_dump($_POST);
 
 // variables
 $cost = 35;
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$email = $_POST['email'];
-$phoneNumber = $_POST['phoneNumber'];
-$phoneType = $_POST['phoneType'];
-$address = $_POST['address'];
-$address2 = $_POST['address2'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$postalCode = $_POST['postalCode'];
-$country = $_POST['country'];
 
 // require API libraries
 require_once('lib/utils.php');
@@ -32,23 +21,19 @@ $nsc = startEtapestrySession();
 // define info
 $account = array();
 $account["nameFormat"] = 1;
-$account["firstName"] = $firstName;
-$account["lastName"] = $lastName;
+$account["firstName"] = $_POST['firstName'];
+$account["lastName"] = $_POST['lastName'];
 $account["personaType"] = "Personal";
-$account["address"] = $address;
-$account["address2"] = $address2;
-$account["city"] = $city;
-$account["state"] = $state;
-$account["postalCode"] = $postalCode;
-$account["country"] = $country;
-$account["email"] = $email;
-
-// Define Phone
+$account["address"] = $_POST['address'];
+$account["address2"] = $_POST['address2'];
+$account["city"] = $_POST['city'];
+$account["state"] = $_POST['state'];
+$account["postalCode"] = $_POST['postalCode'];
+$account["country"] = $_POST['country'];
+$account["email"] = $_POST['email'];
 $phone = array();
-$phone["type"] = $phoneType;
-$phone["number"] = $phoneNumber;
-
-// Add Phone to Account (optional)
+$phone["type"] = $_POST['phoneType'];
+$phone["number"] = $_POST['phoneNumber'];
 $account["phones"] = array($phone);
 
 // Invoke addAccount method
