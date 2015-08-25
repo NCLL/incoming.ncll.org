@@ -86,7 +86,7 @@ function stopEtapestrySession($nsc)
   // Invoke logout method
   echo "Calling logout method...";
   $nsc->call("logout");
-  echo "Done";
+  echo "Done"."<br><br>";
 }
 
 /**

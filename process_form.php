@@ -66,7 +66,7 @@ if ( count( $checkDuplicatesResponse ) !== 1 ) {
     // did a soap fault occur?
     checkStatus($nsc);
 
-    // Output result
+    // output result
     echo "addAccount Response: <pre>";
     print_r($addAccountResponse);
     echo "</pre>";
