@@ -36,22 +36,49 @@ $phone["type"] = $_POST['phoneType'];
 $phone["number"] = $_POST['phoneNumber'];
 $account["phones"] = array($phone);
 
-// Invoke addAccount method
-echo "Calling addAccount method...";
-$addAccountResponse = $nsc->call("addAccount", array($account, false));
-echo "Done<br><br>";
+// set up array to check for duplicates
+$duplicates["name"] = $account["firstName"] . $account["lastName"];
+$duplicates["address"] = $account["address"];
+$duplicates["email"] = $account["email"];
+$duplicates["accountRoleTypes"] = 1;
+$duplicates["allowEmailOnlyMatch"] = false;
+
+// check for duplicates
+echo "Calling for duplicates...";
+$checkDuplicatesResponse = $nsc->call( "getDuplicateAccounts", array( $duplicates ) );
+echo "Done<br/><br/>";
 
 // did a soap fault occur?
 checkStatus($nsc);
 
 // Output result
-echo "addAccount Response: <pre>";
-print_r($addAccountResponse);
+echo "checkDuplicatesResponse: <pre>";
+print_r($checkDuplicatesResponse);
 echo "</pre>";
 
-// Define Gift
+// if no response from duplicates, add a new account
+if ( count( $checkDuplicatesResponse ) !== 1 ) {
+    echo "Calling addAccount method...";
+    $addAccountResponse = $nsc->call( "addAccount", array( $account, false ) );
+    echo "Done<br><br>";
+
+    // did a soap fault occur?
+    checkStatus($nsc);
+
+    // Output result
+    echo "addAccount Response: <pre>";
+    print_r($addAccountResponse);
+    echo "</pre>";
+}
+
+// define gift
 $trans = array();
-$trans["accountRef"] = $addAccountResponse;
+// use account returned from duplicates check if only one exists, else use the newly-created account
+if ( count( $checkDuplicatesResponse ) === 1 ) {
+    $trans["accountRef"] = $checkDuplicatesResponse;
+} else {
+    $trans["accountRef"] = $addAccountResponse;
+}
 $trans["fund"] = "General";
 $trans["amount"] = $cost;
 
