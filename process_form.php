@@ -10,6 +10,7 @@ var_dump($_POST);
 
 // variables
 $cost = 35;
+$notification_address = 'andrew@andrewrminion.com';
 
 // require API libraries
 require_once('lib/utils.php');
@@ -118,6 +119,30 @@ echo "</pre>";
 
 // Call logout method
 stopEtapestrySession($nsc);
+
+echo 'Sending email...<br/>';
+//send_notification( $account );
+send_email_summary( array_merge( $account, $request ), $notification_address );
+echo 'Done sending email<br/>';
+
+
+// send summary email
+function send_email_summary( $data, $notification_address ) {
+    $ch = curl_init();
+    curl_setopt( $ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+    curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'POST' );
+    curl_setopt( $ch, CURLOPT_URL, 'https://api.mailgun.net/v3/mg.ncll.org/messages' );
+    require( 'lib/authentication-curl.php' ); // curl_setopt($ch, CURLOPT_USERPWD, 'api:key-sample');
+    curl_setopt( $ch, CURLOPT_POSTFIELDS,
+        array('from' => $data['firstName'] . ' ' . $data['lastName'] . ' <' . $data['email'] . '>',
+              'to' => $notification_address,
+              'text' => print_r( $data, true ) ) );
+              'subject' => 'New Account',
+    $result = curl_exec( $ch );
+    curl_close( $ch );
+    return $result;
+}
 
 // add sanitization functions
 function cleanInput($input) {

@@ -8,3 +8,4 @@ style.css*
 /js/main.min.js
 /.gitignore
 /lib/authentication.php
+/lib/authentication-curl.php
