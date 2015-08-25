@@ -1,6 +1,9 @@
 <?php
+// set timezone to avoid errors
+date_default_timezone_set( 'America/New_York' );
+
 // sanitize input before doing anything else
-$_POST = sanitize($_POST);
+sanitize($_POST);
 
 // development debugging
 var_dump($_POST);
@@ -23,10 +26,10 @@ $country = $_POST['country'];
 require_once('lib/utils.php');
 require_once('lib/nusoap.php');
 
-// Instantiate nusoap_client and call login method
+// instantiate nusoap_client and call login method
 $nsc = startEtapestrySession();
 
-// Define Account
+// define info
 $account = array();
 $account["nameFormat"] = 1;
 $account["firstName"] = $firstName;
@@ -53,7 +56,7 @@ echo "Calling addAccount method...";
 $addAccountResponse = $nsc->call("addAccount", array($account, false));
 echo "Done<br><br>";
 
-// Did a soap fault occur?
+// did a soap fault occur?
 checkStatus($nsc);
 
 // Output result
@@ -67,36 +70,36 @@ $trans["accountRef"] = $addAccountResponse;
 $trans["fund"] = "General";
 $trans["amount"] = $cost;
 
-// Define Object Name (*)
+// define object name (*)
 $trans["eTapestryObjectName"] = "Gift";
 
-// Define CreditCard
+// define credit card info
 $cc = array();
-$cc["number"] = "9999888877776666";
-$cc["expirationMonth"] = 12;
-$cc["expirationYear"] = 2018;
+$cc["number"] = $_POST['cardnumber'];
+$cc["expirationMonth"] = $_POST['cc-exp-month'];
+$cc["expirationYear"] = $_POST['cc-exp-year'];
 
-// Define Valuable
+// define valuable
 $valuable = array();
 $valuable["type"] = 3;
 $valuable["creditCard"] = $cc;
 
-// Add Valuable to Gift
+// add valuable to gift
 $trans["valuable"] = $valuable;
 
-// Define ProcessTransactionRequest
+// define processTransactionRequest
 $request = array();
 $request["transaction"] = $trans;
 
-// Invoke processTransaction method
+// invoke processTransaction method
 echo "Calling processTransaction method...";
 $processTransactionResponse = $nsc->call("processTransaction", array($request));
 echo "Done<br><br>";
 
-// Did a soap fault occur?
+// did a soap fault occur?
 checkStatus($nsc);
 
-// Output result
+// output result
 echo "addAndProcessPayment Response: <pre>";
 print_r($processTransactionResponse);
 echo "</pre>";
@@ -127,8 +130,7 @@ function sanitize($input) {
         if (get_magic_quotes_gpc()) {
             $input = stripslashes($input);
         }
-        $input  = cleanInput($input);
-        $output = mysql_real_escape_string($input);
+        $output  = cleanInput($input);
     }
     return $output;
 }
