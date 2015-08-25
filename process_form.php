@@ -106,7 +106,7 @@ $request["transaction"] = $trans;
 
 // invoke processTransaction method
 echo "Calling processTransaction method...";
-$processTransactionResponse = $nsc->call("processTransaction", array($request));
+#$processTransactionResponse = $nsc->call("processTransaction", array($request));
 echo "Done<br><br>";
 
 // did a soap fault occur?
