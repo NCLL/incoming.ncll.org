@@ -140,9 +140,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta-headers {
     margin: 1em;
-    background-color: rgba(white, 0.7);
-    padding: 1em;
+    @media only screen and (max-width: 767px) { margin-bottom: 0; }
     color: $accent_color;
+    text-align: center;
 
     h1:first-child{ margin-top: 0; }
     h2 {
@@ -208,9 +208,10 @@ h1, h2, h3, h4, h5, h6 {
    ============== */
 
 .main-form {
-    padding: 1em;
-    margin: 1em;
     background: url('/img/form-background.svg') no-repeat bottom center / cover;
+    padding: 1em 1em 6em;
+    margin: 1em 1em -4em;
+    @media only screen and (min-width: 768px) { margin-top: 2em; }
     color: white;
 }
 
