@@ -1,6 +1,4 @@
-@import "normalize.scss";
-@import "modular-scale/_modular-scale";
-
+// site-wide variables
 $primary_color:         #334760;
 $secondary_color:       #3B3B3B;
 $accent_color:          #e44d26;
@@ -9,9 +7,14 @@ $placeholder_color:     rgba(196, 222, 255, 0.3);
 
 $serif-font-stack:      'Libre Baskerville', Georgia, serif;
 $sans-serif-font-stack: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ms-base:               1em;
+$ms-ratio:              1.333;
+
+// imports
+@import "modular-scale/_modular-scale";
+@import "normalize.scss";
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
-
 html {
     color: #222;
     font-size: ms(1);
