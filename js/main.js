@@ -21,6 +21,17 @@ $( document ).ready( function() {
             $( this ).prev().fadeIn().children( 'input' ).first().focus().select();
         });
     });
+
+    // add tabindex to all inputs, ordering back buttons after next
+    $( ":input" ).each( function(i) {
+        $( this ).attr( 'tabindex', i + 1 );
+    });
+    $( ":input.back" ).each( function(j) {
+        $(this).attr('tabindex', +( $( this ).attr( 'tabindex' ) ) + 1);
+    });
+    $( ":input.next, :input[type='submit']").each( function(j) {
+        $( this ).attr( 'tabindex', +( $( this ).attr( 'tabindex' ) ) - 1);
+    });
 });
 
 // from https://github.com/dreamerslab/jquery.actual/
