@@ -164,6 +164,8 @@ h1, h2, h3, h4, h5, h6 {
         padding: 2em 2em 6em;
     }
     color: white;
+    // following lines to fix bottom negative margin
+    position: relative;
     z-index: 10;
 }
 
