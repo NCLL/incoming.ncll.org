@@ -208,9 +208,9 @@ h1, h2, h3, h4, h5, h6 {
    ============== */
 
 .main-form {
-    background-color: rgba($primary_color, 0.95);
     padding: 1em;
     margin: 1em;
+    background: url('/img/form-background.svg') no-repeat bottom center / cover;
     color: white;
 }
 
