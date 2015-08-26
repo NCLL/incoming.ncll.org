@@ -1,5 +1,5 @@
-// handle forward/back buttons
 $( document ).ready( function() {
+    // handle forward/back buttons
     $( 'form' ).on( 'click', '.next, .back', function( event ) {
         event.preventDefault();
     });
@@ -9,7 +9,13 @@ $( document ).ready( function() {
         var $nextHeight = $( this ).parent( 'fieldset' ).next().actual( 'height' );
         $( '.signup' ).animate( { height: $formHeight - $thisHeight + $nextHeight } );
         $( this ).parent( 'fieldset' ).fadeOut(300, function() {
-            $( this ).next().fadeIn().children( 'input' ).first().focus().select();
+            $( this ).next().fadeIn(300);
+            var $firstInput = $( this ).next().children( 'input' ).first();
+            $( 'html, body' ).animate({
+                scrollTop: ( $firstInput.offset().top - 32 )
+            }, 300, function() {
+                $firstInput.focus();
+            });
         });
     });
     $( 'form' ).on( 'click', '.back', function( event ) {
@@ -18,7 +24,13 @@ $( document ).ready( function() {
         var $prevHeight = $( this ).parent( 'fieldset' ).prev().actual( 'height' );
         $( '.signup' ).animate( { height: $formHeight - $thisHeight + $prevHeight } );
         $( this ).parent( 'fieldset' ).fadeOut(300, function() {
-            $( this ).prev().fadeIn().children( 'input' ).first().focus().select();
+            $( this ).prev().fadeIn();
+            var $firstInput = $( this ).prev().children( 'input' ).first();
+            $( 'html, body' ).animate({
+                scrollTop: ( $firstInput.offset().top - 32 )
+            }, 300, function() {
+                $firstInput.focus();
+            });
         });
     });
 
