@@ -1,4 +1,5 @@
 @import "normalize.scss";
+@import "modular-scale/_modular-scale";
 
 $primary_color:         #334760;
 $secondary_color:       #3B3B3B;
@@ -13,7 +14,7 @@ $sans-serif-font-stack: 'Quattrocento Sans', 'Helvetica Neue', Helvetica, Arial,
 
 html {
     color: #222;
-    font-size: 1em;
+    font-size: ms(1);
     line-height: 1.4;
 }
 
@@ -146,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
     h1:first-child{ margin-top: 0; }
     h2 {
         font-family: $sans-serif-font-stack;
-        font-size: smaller;
+        font-size: ms(0);
     }
 }
 
@@ -168,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2em 0;
 
     article h1 {
-        font-size: 2em;
+        font-size: ms(2);
         line-height: 1.625em;
     }
 
@@ -300,7 +301,7 @@ fieldset {
 }
 
 .copyright {
-    font-size: smaller;
+    font-size: ms(-1);
     text-align: center;
 }
 
