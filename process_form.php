@@ -9,6 +9,7 @@ sanitize($_POST);
 var_dump($_POST);
 
 // variables
+$api_version = 2;
 $cost = 35;
 $notification_address = 'andrew@andrewrminion.com';
 
@@ -21,9 +22,13 @@ $nsc = startEtapestrySession();
 
 // define info
 $account = array();
-$account["nameFormat"] = 1;
-$account["firstName"] = $_POST['firstName'];
-$account["lastName"] = $_POST['lastName'];
+if ( $api_version == 2 ) {
+    $account["name"] = $_POST['firstName'] . ' ' . $_POST['lastName'];
+}elseif ( $api_version == 3 ) {
+    $account["nameFormat"] = 1;
+    $account["firstName"] = $_POST['firstName'];
+    $account["lastName"] = $_POST['lastName'];
+}
 $account["personaType"] = "Personal";
 $account["address"] = $_POST['address'];
 $account["address2"] = $_POST['address2'];
