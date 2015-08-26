@@ -167,7 +167,7 @@ h3, h5 { font-variant: small-caps; }
 }
 
 .main-form {
-    background: url('/img/form-background.svg') no-repeat bottom center / cover;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1600" viewBox="0 0 800 1600"><radialGradient id="a" cx="409.001" cy="-4.08" r="1635.363" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5979A3"/><stop offset="1" stop-color="#344760"/></radialGradient><path fill="url(#a)" d="M400 1600L0 1553V0h800v1553"/></svg>') no-repeat bottom center / cover;
     padding: 1em 1em 6em;
     margin: 2em 1em -4em;
     @media only screen and (min-width: 768px) {
