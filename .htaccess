@@ -5,6 +5,9 @@ ServerSignature Off
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteRule ^favicon.ico$ /favicons/favicon.ico [L]
+RewriteRule ^manifest.json$ /favicons/manifest.json [L]
+RewriteRule ^browserconfig.xml$ /favicons/browserconfig.xml [L]
 
 <IfModule mod_deflate.c>
 
