@@ -142,6 +142,7 @@ echo 'Done<br><br>';
 function send_email_summary( $data, $notification_address, $checkDuplicatesResponse, $addAccountResponse, $processTransactionResponse ) {
 
     // set up message content
+    $message_content = NULL;
     $message_content .= '<h1>New NCLL Account</h1>';
     $message_content .= '<p>Generated from ' . $_SERVER['HTTP_REFERER'] . ' page</p>';
 
