@@ -9,7 +9,7 @@ sanitize($_POST);
 var_dump($_POST);
 
 // variables
-$api_version = 2;
+$api_version = 3;
 $cost = 35;
 $notification_address = 'andrew@andrewrminion.com';
 
