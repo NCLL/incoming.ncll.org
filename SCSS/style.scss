@@ -255,7 +255,7 @@ a.button {
     &:hover, &:focus { background-color: darken( $accent_color, 10% ); }
     &:active { background-color: darken( $accent_color, 25% ); }
 
-    .address &, .payment & {
+    .js .address &, .js .payment & {
         width: 49%;
         display: inline-block;
     }
@@ -263,6 +263,10 @@ a.button {
 
 fieldset {
     .js &.address, .js &.payment { display: none; }
+}
+
+.no-js .button {
+    &.back, &.next { display: none; }
 }
 
 #cc-exp-month { margin-right: .25em; }
