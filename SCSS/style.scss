@@ -180,10 +180,6 @@ h3, h5 { font-variant: small-caps; }
     position: relative;
     z-index: 10;
 
-    .no-svg & {
-        background-color: $primary_color;
-        margin-bottom: 0;
-    }
     .no-flexbox & { margin-bottom: 1em; }
 }
 
