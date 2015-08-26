@@ -43,7 +43,11 @@ $phone["number"] = $_POST['phoneNumber'];
 $account["phones"] = array($phone);
 
 // set up array to check for duplicates
-$duplicates["name"] = $account["firstName"] . $account["lastName"];
+if ( $api_version == 2 ) {
+    $duplicates["name"] = $account["name"];
+} elseif ( $api_version == 3 ) {
+    $duplicates["name"] = $account["firstName"] . ' ' . $account["lastName"];
+}
 $duplicates["address"] = $account["address"];
 $duplicates["email"] = $account["email"];
 $duplicates["accountRoleTypes"] = 1;
