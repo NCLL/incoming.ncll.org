@@ -69,7 +69,7 @@ echo "</pre>";
 echo "Count of checkDuplicatesResponse: " . count( $checkDuplicatesResponse ) . '<br><br>';
 
 // if no response from duplicates, add a new account
-if ( count( $checkDuplicatesResponse ) > 1 ) {
+if ( count( $checkDuplicatesResponse ) >= 1 ) {
     echo "Calling addAccount method...";
     echo '<pre>';print_r($account);echo '</pre>';
     $addAccountResponse = $nsc->call( "addAccount", array( $account, false ) );
@@ -145,7 +145,7 @@ function send_email_summary( $data, $notification_address, $checkDuplicatesRespo
     $message_content .= '<h1>New NCLL Account</h1>';
     $message_content .= '<p>Generated from ' . $_SERVER['HTTP_REFERER'] . ' page</p>';
 
-    if ( count( $checkDuplicatesResponse ) > 1 ) {
+    if ( count( $checkDuplicatesResponse ) >= 1 ) {
         $message_content .= '<h2>Possible duplicate accounts&hellip;</h2>';
         $message_content .= '<p>A new account was created to be safe. Please manually check for other accounts matching this name, email address, phone, and/or address.</p>';
     }
