@@ -51,10 +51,11 @@ if ( $api_version == 2 ) {
 $duplicates["address"] = $account["address"];
 $duplicates["email"] = $account["email"];
 $duplicates["accountRoleTypes"] = 1;
-$duplicates["allowEmailOnlyMatch"] = false;
+$duplicates["allowEmailOnlyMatch"] = 'false';
 
 // check for duplicates
 echo "Calling for duplicates...";
+echo '<pre>';print_r($duplicates);echo '</pre>';
 $checkDuplicatesResponse = $nsc->call( "getDuplicateAccounts", array( $duplicates ) );
 echo "Done<br/><br/>";
 
@@ -69,6 +70,7 @@ echo "</pre>";
 // if no response from duplicates, add a new account
 if ( count( $checkDuplicatesResponse ) !== 1 ) {
     echo "Calling addAccount method...";
+    echo '<pre>';print_r($account);echo '</pre>';
     $addAccountResponse = $nsc->call( "addAccount", array( $account, false ) );
     echo "Done<br><br>";
 
@@ -115,6 +117,7 @@ $request["transaction"] = $trans;
 
 // invoke processTransaction method
 echo "Calling processTransaction method...";
+echo '<pre>';print_r($request);echo '</pre>';
 #$processTransactionResponse = $nsc->call("processTransaction", array($request));
 echo "Done<br><br>";
 
