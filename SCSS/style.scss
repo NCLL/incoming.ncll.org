@@ -104,8 +104,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .header-container,
 .cta-container {
-    border-bottom: 1em solid $secondary_color;
+    border-bottom: 1em solid;
 }
+
+.header-container { border-bottom-color: white; }
+
+.cta-container { border-bottom-color: $secondary_color; }
 
 .footer-container,
 .main aside {
@@ -139,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cta-headers {
-    margin: 1em;
+    margin: 3em 1em 1em;
     @media only screen and (max-width: 767px) { margin-bottom: 0; }
     color: $accent_color;
     text-align: center;
@@ -151,6 +155,18 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.main-form {
+    background: url('/img/form-background.svg') no-repeat bottom center / cover;
+    padding: 1em 1em 6em;
+    margin: 2em 1em -4em;
+    @media only screen and (min-width: 768px) {
+        margin-top: 2em;
+        padding: 2em 2em 6em;
+    }
+    color: white;
+}
+
+// media queries for cta-headers and form ordering
 @media screen and (max-width: 767px) {
     .cta-headers, .main-form { width: 100%; }
     .main-form { order: 2; }
@@ -206,14 +222,6 @@ h1, h2, h3, h4, h5, h6 {
 /* ==============
     Forms
    ============== */
-
-.main-form {
-    background: url('/img/form-background.svg') no-repeat bottom center / cover;
-    padding: 1em 1em 6em;
-    margin: 1em 1em -4em;
-    @media only screen and (min-width: 768px) { margin-top: 2em; }
-    color: white;
-}
 
 .signup h2:first-child { margin-top: 0; }
 
