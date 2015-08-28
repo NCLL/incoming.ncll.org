@@ -26,8 +26,8 @@ if ( $debugging == 'heavy' ) {
 }
 
 // require API libraries
-require_once('lib/utils.php');
-require_once('lib/nusoap.php');
+require_once('utils.php');
+require_once('nusoap.php');
 
 // instantiate nusoap_client and call login method
 $nsc = startEtapestrySession( $api_version, $debugging );
@@ -223,7 +223,7 @@ function send_email_summary( $data, $notification_address, $checkDuplicatesRespo
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
     curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'POST' );
     curl_setopt( $ch, CURLOPT_URL, 'https://api.mailgun.net/v3/mg.ncll.org/messages' );
-    require( 'lib/authentication-curl.php' ); // curl_setopt($ch, CURLOPT_USERPWD, 'api:key-sample');
+    require( 'authentication-curl.php' ); // curl_setopt($ch, CURLOPT_USERPWD, 'api:key-sample');
     curl_setopt( $ch, CURLOPT_POSTFIELDS,
         array('from' => $data['firstName'] . ' ' . $data['lastName'] . ' <' . $data['email'] . '>',
             'to' => $notification_address,

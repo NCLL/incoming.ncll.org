@@ -2,7 +2,7 @@
 
         <section class="cta-container clearfix" style="background-image: url(/img/example-family.jpg);">
             <section class="main-form">
-                <form class="signup" method="post" action="process_form.php">
+                <form class="signup" method="post" action="lib/process_form.php">
                     <h2>Sign Up</h2>
                     <fieldset class="contact">
                         <legend class="visuallyhidden"><h3>Contact Information</h3></legend>
