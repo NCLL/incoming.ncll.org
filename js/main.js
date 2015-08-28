@@ -47,28 +47,32 @@ $( document ).ready( function() {
 
     // add AJAX form submission
     $( 'form.signup' ).append( '<input type="hidden" name="ajax" value="true">' );
-    $( 'input[type="submit"]' ).on( 'click', function() {
+    $( 'form.signup' ).on( 'submit', function() {
+
         // add loading class
         $( '[type="submit"]' ).html( 'Loading&hellip; <span class="spinner"></span>' );
 
+        // prevent default form submission
+        event.preventDefault();
+
+        // get all form data
         var formData = $( 'form.signup' ).serializeArray();
+
+        // submit via ajax
         $.ajax({
             type: "POST",
-            url: "process_form.php",
-            data: formData,
-            done: function( data ) {
-                // replace last fieldset with thank-you message
-                console.log('Form submission successful');
-                console.log( data );
-            },
-            fail: function( data ) {
-                // show error message
-                console.log('Form submission failed');
-                console.log( data );
-            }
+            url: "lib/process_form.php",
+            data: formData
+        }).done( function( data ) {
+            // replace last fieldset with thank-you message
+
+            console.log('Form submission successful');
+            console.log( data );
+        }).fail( function( data ) {
+            // go back to form, display error message
+            console.log('Form submission failed');
+            console.log( data );
         });
-        // prevent default form submission
-        return false;
     });
 });
 
