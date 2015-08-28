@@ -25,7 +25,7 @@ function checkStatus($nsc)
  * Start an eTapestry API session by instantiating a
  * nusoap_client instance and calling the login method.
  */
-function startEtapestrySession( $api_version )
+function startEtapestrySession( $api_version, $debugging )
 {
   // Set login details and initial endpoint
   require('authentication-eTap.php');
@@ -37,17 +37,29 @@ function startEtapestrySession( $api_version )
   }
 
   // Instantiate nusoap_client
-  echo "Establishing NuSoap Client...";
+  if ($debugging)
+  {
+    echo "Establishing NuSoap Client...";
+  }
   $nsc = new nusoap_client($endpoint, true);
-  echo "Done<br><br>";
+  if ($debugging)
+  {
+      echo "Done<br><br>";
+  }
 
   // Did an error occur?
   checkStatus($nsc);
 
   // Invoke login method
-  echo "Calling login method...";
+  if ($debugging)
+  {
+    echo "Calling login method...";
+  }
   $newEndpoint = $nsc->call("login", array($loginId, $password));
-  echo "Done<br><br>";
+  if ($debugging)
+  {
+    echo "Done<br><br>";
+  }
 
   // Did a soap fault occur?
   checkStatus($nsc);
@@ -77,7 +89,10 @@ function startEtapestrySession( $api_version )
   }
 
   // Output results
-  echo "Login Successful<br><br>";
+  if ($debugging)
+  {
+    echo "Login Successful<br><br>";
+  }
 
   return $nsc;
 }
@@ -86,12 +101,18 @@ function startEtapestrySession( $api_version )
  * Start an eTapestry API session by calling the logout
  * method given a nusoap_client instance.
  */
-function stopEtapestrySession($nsc)
+function stopEtapestrySession($nsc, $debugging)
 {
   // Invoke logout method
-  echo "Calling logout method...";
+  if ($debugging)
+  {
+    echo "Calling logout method...";
+  }
   $nsc->call("logout");
-  echo "Done"."<br><br>";
+  if ($debugging)
+  {
+    echo "Done"."<br><br>";
+  }
 }
 
 /**

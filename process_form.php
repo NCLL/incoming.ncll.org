@@ -5,20 +5,23 @@ date_default_timezone_set( 'America/New_York' );
 // sanitize input before doing anything else
 sanitize($_POST);
 
-// development debugging
-var_dump($_POST);
-
 // variables
 $api_version = 2;
 $cost = 35;
 $notification_address = 'andrew@andrewrminion.com';
+$debugging = false; // false = off; true = some; 'heavy' = everything possible;
+
+// development debugging
+if ( $debugging == 'heavy' ) {
+    var_dump($_POST);
+}
 
 // require API libraries
 require_once('lib/utils.php');
 require_once('lib/nusoap.php');
 
 // instantiate nusoap_client and call login method
-$nsc = startEtapestrySession( $api_version );
+$nsc = startEtapestrySession( $api_version, $debugging );
 
 // define info
 $account = array();
@@ -54,34 +57,52 @@ $duplicates["accountRoleTypes"] = 1;
 $duplicates["allowEmailOnlyMatch"] = 'false';
 
 // check for duplicates
-echo "Calling for duplicates...";
-echo '<pre>';print_r($duplicates);echo '</pre>';
+if ( $debugging ) {
+    echo "Calling for duplicates...";
+}
+if ( $debugging == 'heavy' ) {
+    echo '<pre>';print_r($duplicates);echo '</pre>';
+}
 $checkDuplicatesResponse = $nsc->call( "getDuplicateAccounts", array( $duplicates ) );
-echo "Done<br/><br/>";
+if ( $debugging ) {
+    echo "Done<br/><br/>";
+}
 
 // did a soap fault occur?
 checkStatus($nsc);
 
 // Output result
-echo "checkDuplicatesResponse: <pre>";
-print_r($checkDuplicatesResponse);
-echo "</pre>";
-echo "Count of checkDuplicatesResponse: " . count( $checkDuplicatesResponse ) . '<br><br>';
+if ( $debugging == 'heavy' ) {
+    echo "checkDuplicatesResponse: <pre>";
+    print_r($checkDuplicatesResponse);
+    echo "</pre>";
+}
+if ( $debugging ) {
+    echo "Count of checkDuplicatesResponse: " . count( $checkDuplicatesResponse ) . '<br><br>';
+}
 
 // if no response from duplicates, add a new account
 if ( count( $checkDuplicatesResponse ) >= 1 ) {
-    echo "Calling addAccount method...";
-    echo '<pre>';print_r($account);echo '</pre>';
+    if ( $debugging ) {
+        echo "Calling addAccount method...";
+    }
+    if ( $debugging == 'heavy' ) {
+        echo '<pre>';print_r($account);echo '</pre>';
+    }
     $addAccountResponse = $nsc->call( "addAccount", array( $account, false ) );
-    echo "Done<br><br>";
+    if ( $debugging ) {
+        echo "Done<br><br>";
+    }
 
     // did a soap fault occur?
     checkStatus($nsc);
 
     // output result
-    echo "addAccount Response: <pre>";
-    print_r($addAccountResponse);
-    echo "</pre>";
+    if ( $debugging ) {
+        echo "addAccount Response: <pre>";
+        print_r($addAccountResponse);
+        echo "</pre>";
+    }
 }
 
 // define gift
@@ -117,26 +138,37 @@ $request = array();
 $request["transaction"] = $trans;
 
 // invoke processTransaction method
-echo "Calling processTransaction method...";
-echo '<pre>';print_r($request);echo '</pre>';
+if ( $debugging ) {
+    echo "Calling processTransaction method...";
+}
+if ( $debugging == 'heavy' ) {
+    echo '<pre>';print_r($request);echo '</pre>';
+}
 #$processTransactionResponse = $nsc->call("processTransaction", array($request));
-echo "Done<br><br>";
+if ( $debugging ) {
+    echo "Done<br><br>";
+}
 
 // did a soap fault occur?
 checkStatus($nsc);
 
 // output result
-echo "addAndProcessPayment Response: <pre>";
-print_r($processTransactionResponse);
-echo "</pre>";
+if ( $debugging ) {
+    echo "addAndProcessPayment Response: <pre>";
+    print_r($processTransactionResponse);
+    echo "</pre>";
+}
 
 // Call logout method
-stopEtapestrySession($nsc);
+stopEtapestrySession( $nsc, $debugging );
 
-echo 'Sending email...';
+if ( $debugging ) {
+    echo 'Sending email...';
+}
 send_email_summary( array_merge( $account, $request ), $notification_address, $checkDuplicatesResponse, $addAccountResponse, $processTransactionResponse );
-echo 'Done<br><br>';
-
+if ( $debugging ) {
+    echo 'Done<br><br>';
+}
 
 // send summary email
 function send_email_summary( $data, $notification_address, $checkDuplicatesResponse, $addAccountResponse, $processTransactionResponse ) {
