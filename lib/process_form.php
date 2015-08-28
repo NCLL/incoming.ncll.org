@@ -36,6 +36,8 @@ $nsc = startEtapestrySession( $api_version, $debugging );
 $account = array();
 if ( $api_version == 2 ) {
     $account["name"] = $_POST['firstName'] . ' ' . $_POST['lastName'];
+    $account["firstName"] = $_POST['firstName'];
+    $account["lastName"] = $_POST['lastName'];
 } elseif ( $api_version == 3 ) {
     $account["nameFormat"] = 1;
     $account["firstName"] = $_POST['firstName'];
