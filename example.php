@@ -103,6 +103,17 @@
                         <button type="submit">Sign Up &rarr;</button>
                     </fieldset>
                 </form>
+                <div class="message success" style="display: none;">
+                    <h2>Thank you</h2>
+                    <p>We&rsquo;ll be in touch soon.</p>
+                    <p>In the meantime, check out <a href="http://www.ncll.org/">our website</a>.</p>
+                </div>
+                <div class="message failure" style="display: none;">
+                    <h2>Oops&hellip;</h2>
+                    <p>Something went wrong.</p>
+                    <p>We did get your contact information, however, and we&rsquo;ll reach out to you as soon as we can.</p>
+                    <p>In the meantime, check out <a href="http://www.ncll.org/">our website</a>.</p>
+                </div>
             </section><!-- .form -->
             <section class="cta-headers">
                 <h1>Secure your Homeschool Membership Today!</h1>

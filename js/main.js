@@ -45,7 +45,7 @@ $( document ).ready( function() {
         $( this ).attr( 'tabindex', +( $( this ).attr( 'tabindex' ) ) - 1);
     });
 
-    // add AJAX form submission
+    // submit form via AJAX
     $( 'form.signup' ).append( '<input type="hidden" name="ajax" value="true">' );
     $( 'form.signup' ).on( 'submit', function() {
 
@@ -65,13 +65,18 @@ $( document ).ready( function() {
             data: formData
         }).done( function( data ) {
             // replace last fieldset with thank-you message
-
-            console.log('Form submission successful');
+            $( 'form.signup' ).fadeOut(300, function() {
+                $( '.message.success' ).fadeIn();
+            });
             console.log( data );
+            console.log('Form submission successful');
         }).fail( function( data ) {
             // go back to form, display error message
-            console.log('Form submission failed');
+            $( 'form.signup' ).fadeOut(300, function() {
+                $( '.message.failure' ).fadeIn();
+            });
             console.log( data );
+            console.log('Form submission failed');
         });
     });
 });
