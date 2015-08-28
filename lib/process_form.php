@@ -4,9 +4,9 @@ sanitize( $_POST );
 
 // variables
 $api_version = 2;
-$cost = 35;
+$cost = 1;
 $notification_address = 'andrew@andrewrminion.com';
-$debugging = 'true'; // false = off; true = some; 'heavy' = everything possible;
+$debugging = false; // false = off; 'true' = some; 'heavy' = everything possible;
 
 // output template if not called via AJAX
 if ( ! $_POST['ajax'] ) {
@@ -23,6 +23,7 @@ if ( ! $_POST['ajax'] ) {
 // development debugging
 if ( $debugging == 'heavy' ) {
     var_dump( $_POST );
+    echo "\n\n";
 }
 
 // require API libraries
@@ -80,7 +81,7 @@ if ( $debugging ) {
 }
 
 // did a soap fault occur?
-checkStatus( $nsc );
+checkStatus( $nsc, $_POST['ajax'] );
 
 // Output result
 if ( $debugging == 'heavy' ) {
@@ -92,7 +93,7 @@ if ( $debugging ) {
     echo "Count of checkDuplicatesResponse: " . count( $checkDuplicatesResponse ) . "\n\n";
 }
 
-// if no response from duplicates, add a new account
+// if duplicates check does not return 1 (none or multiple matches), add a new account
 if ( count( $checkDuplicatesResponse ) != 1 ) {
     if ( $debugging ) {
         echo "Calling addAccount method...";
@@ -106,7 +107,7 @@ if ( count( $checkDuplicatesResponse ) != 1 ) {
     }
 
     // did a soap fault occur?
-    checkStatus( $nsc );
+    checkStatus( $nsc, $_POST['ajax'] );
 
     // output result
     if ( $debugging ) {
@@ -120,7 +121,7 @@ if ( count( $checkDuplicatesResponse ) != 1 ) {
 $trans = array();
 // use account returned from duplicates check if only one exists, else use the newly-created account
 if ( count( $checkDuplicatesResponse ) === 1 ) {
-    $trans["accountRef"] = $checkDuplicatesResponse;
+    $trans["accountRef"] = $checkDuplicatesResponse[0]['ref'];
 } else {
     $trans["accountRef"] = $addAccountResponse;
 }
@@ -155,13 +156,13 @@ if ( $debugging ) {
 if ( $debugging == 'heavy' ) {
     echo '<pre>'; print_r( $request ); echo '</pre>';
 }
-#$processTransactionResponse = $nsc->call( "processTransaction", array( $request ) );
+$processTransactionResponse = $nsc->call( "processTransaction", array( $request ) );
 if ( $debugging ) {
     echo "Done"."\n\n";
 }
 
 // did a soap fault occur?
-checkStatus( $nsc );
+checkStatus( $nsc, $_POST['ajax'] );
 
 // output result
 if ( $debugging ) {
@@ -191,6 +192,9 @@ if ( ! $_POST['ajax'] ) {
     // include template footer
     include('../template/footer.html');
 }
+
+// return successful JSON response
+
 
 // send summary email
 function send_email_summary( $data, $notification_address, $checkDuplicatesResponse, $addAccountResponse, $processTransactionResponse ) {

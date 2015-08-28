@@ -62,21 +62,23 @@ $( document ).ready( function() {
         $.ajax({
             type: "POST",
             url: "lib/process_form.php",
-            data: formData
+            data: formData,
+            dataType: "json",
         }).done( function( data ) {
             // replace last fieldset with thank-you message
             $( 'form.signup' ).fadeOut(300, function() {
                 $( '.message.success' ).fadeIn();
             });
             console.log( data );
-            console.log('Form submission successful');
+            console.log( 'Form submission successful' );
         }).fail( function( data ) {
+            var $responseText = $.parseJSON( data['responseText'] );
             // go back to form, display error message
             $( 'form.signup' ).fadeOut(300, function() {
-                $( '.message.failure' ).fadeIn();
+                $( '.message.failure' ).fadeIn().append( '<p><strong>Error message:</strong> ' + $responseText['faultString'] + '</p>' );
             });
             console.log( data );
-            console.log('Form submission failed');
+            console.log( 'Form submission failed' );
         });
     });
 });

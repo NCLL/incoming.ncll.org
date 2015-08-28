@@ -4,7 +4,7 @@
  * Utility method to determine if a NuSoap fault or error occurred.
  * If so, output any relevant info and stop the code from executing.
  */
-function checkStatus($nsc)
+function checkStatus($nsc, $ajax)
 {
   if ($nsc->fault || $nsc->getError())
   {
@@ -14,8 +14,19 @@ function checkStatus($nsc)
     }
     else
     {
-      echo "Fault Code: ".$nsc->faultcode."<br>";
-      echo "Fault String: ".$nsc->faultstring."<br>";
+      if ($ajax) {
+        header('HTTP/1.1 400 Bad Request');
+        header('Content-Type: application/json; charset=UTF-8');
+        $errors = array();
+        $errors['faultCode'] = $nsc->faultcode;
+        $errors['faultString'] = $nsc->faultstring;
+        echo json_encode($errors);
+      }
+      else
+      {
+        echo "Fault Code: ".$nsc->faultcode."<br>";
+        echo "Fault String: ".$nsc->faultstring."<br>";
+      }
     }
     exit;
   }
