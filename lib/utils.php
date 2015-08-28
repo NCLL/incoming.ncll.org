@@ -44,7 +44,7 @@ function startEtapestrySession( $api_version, $debugging )
   $nsc = new nusoap_client($endpoint, true);
   if ($debugging)
   {
-      echo "Done<br><br>";
+      echo "Done\n\n";
   }
 
   // Did an error occur?
@@ -58,7 +58,7 @@ function startEtapestrySession( $api_version, $debugging )
   $newEndpoint = $nsc->call("login", array($loginId, $password));
   if ($debugging)
   {
-    echo "Done<br><br>";
+    echo "Done\n\n";
   }
 
   // Did a soap fault occur?
@@ -69,12 +69,12 @@ function startEtapestrySession( $api_version, $debugging )
   // environment that can only be accessed using the provided endpoint
   if ($newEndpoint != "")
   {
-    echo "New Endpoint: $newEndpoint<br><br>";
+    echo "New Endpoint: $newEndpoint\n\n";
 
     // Instantiate nusoap_client with different endpoint
     echo "Establishing NuSoap Client with new endpoint...";
     $nsc = new nusoap_client($newEndpoint, true);
-    echo "Done<br><br>";
+    echo "Done\n\n";
 
     // Did an error occur?
     checkStatus($nsc);
@@ -82,7 +82,7 @@ function startEtapestrySession( $api_version, $debugging )
     // Invoke login method
     echo "Calling login method...";
     $nsc->call("login", array($loginId, $password));
-    echo "Done<br><br>";
+    echo "Done\n\n";
 
     // Did a soap fault occur?
     checkStatus($nsc);
@@ -91,7 +91,7 @@ function startEtapestrySession( $api_version, $debugging )
   // Output results
   if ($debugging)
   {
-    echo "Login Successful<br><br>";
+    echo "Login Successful\n\n";
   }
 
   return $nsc;
@@ -111,7 +111,7 @@ function stopEtapestrySession($nsc, $debugging)
   $nsc->call("logout");
   if ($debugging)
   {
-    echo "Done"."<br><br>";
+    echo "Done\n\n";
   }
 }
 

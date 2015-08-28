@@ -6,7 +6,7 @@ sanitize( $_POST );
 $api_version = 2;
 $cost = 35;
 $notification_address = 'andrew@andrewrminion.com';
-$debugging = false; // false = off; true = some; 'heavy' = everything possible;
+$debugging = 'true'; // false = off; true = some; 'heavy' = everything possible;
 
 // output template if not called via AJAX
 if ( ! $_POST['ajax'] ) {
@@ -76,7 +76,7 @@ if ( $debugging == 'heavy' ) {
 }
 $checkDuplicatesResponse = $nsc->call( "getDuplicateAccounts", array( $duplicates ) );
 if ( $debugging ) {
-    echo "Done<br/><br/>";
+    echo "Done"."\n\n";
 }
 
 // did a soap fault occur?
@@ -89,7 +89,7 @@ if ( $debugging == 'heavy' ) {
     echo "</pre>";
 }
 if ( $debugging ) {
-    echo "Count of checkDuplicatesResponse: " . count( $checkDuplicatesResponse ) . '<br><br>';
+    echo "Count of checkDuplicatesResponse: " . count( $checkDuplicatesResponse ) . "\n\n";
 }
 
 // if no response from duplicates, add a new account
@@ -102,7 +102,7 @@ if ( count( $checkDuplicatesResponse ) >= 1 ) {
     }
     $addAccountResponse = $nsc->call( "addAccount", array( $account, false ) );
     if ( $debugging ) {
-        echo "Done<br><br>";
+        echo "Done"."\n\n";
     }
 
     // did a soap fault occur?
@@ -157,7 +157,7 @@ if ( $debugging == 'heavy' ) {
 }
 #$processTransactionResponse = $nsc->call( "processTransaction", array( $request ) );
 if ( $debugging ) {
-    echo "Done<br><br>";
+    echo "Done"."\n\n";
 }
 
 // did a soap fault occur?
@@ -178,7 +178,7 @@ if ( $debugging ) {
 }
 send_email_summary( array_merge( $account, $request ), $notification_address, $checkDuplicatesResponse, $addAccountResponse, $processTransactionResponse );
 if ( $debugging ) {
-    echo 'Done<br><br>';
+    echo 'Done'."\n\n";
 }
 
 // output template if not called via AJAX
