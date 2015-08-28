@@ -48,6 +48,9 @@ $( document ).ready( function() {
     // add AJAX form submission
     $( 'form.signup' ).append( '<input type="hidden" name="ajax" value="true">' );
     $( 'input[type="submit"]' ).on( 'click', function() {
+        // add loading class
+        $( '[type="submit"]' ).html( 'Loading&hellip; <span class="spinner"></span>' );
+
         var formData = $( 'form.signup' ).serializeArray();
         $.ajax({
             type: "POST",
