@@ -1,7 +1,4 @@
 <?php
-// set timezone to avoid errors
-date_default_timezone_set( 'America/New_York' );
-
 // sanitize input before doing anything else
 sanitize( $_POST );
 

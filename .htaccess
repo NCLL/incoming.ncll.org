@@ -12,6 +12,9 @@ RewriteRule ^favicon.ico$ /favicons/favicon.ico [L]
 RewriteRule ^manifest.json$ /favicons/manifest.json [L]
 RewriteRule ^browserconfig.xml$ /favicons/browserconfig.xml [L]
 
+# set PHP timezone
+SetEnv TZ America/New_York
+
 # add keep-alive
 <ifModule mod_headers.c>
     Header set Connection keep-alive
