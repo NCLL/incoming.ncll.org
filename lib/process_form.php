@@ -10,7 +10,7 @@ $debugging = 'true'; // false = off; true = some; 'heavy' = everything possible;
 
 // output template if not called via AJAX
 if ( ! $_POST['ajax'] ) {
-    include('template/header.html');
+    include('../template/header.html');
     ?>
     <section class="main-container">
         <section class="main wrapper clearfix">
@@ -189,7 +189,7 @@ if ( ! $_POST['ajax'] ) {
     </section>
     <?php
     // include template footer
-    include('template/footer.html');
+    include('../template/footer.html');
 }
 
 // send summary email
