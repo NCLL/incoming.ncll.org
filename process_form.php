@@ -3,7 +3,7 @@
 date_default_timezone_set( 'America/New_York' );
 
 // sanitize input before doing anything else
-sanitize($_POST);
+sanitize( $_POST );
 
 // variables
 $api_version = 2;
@@ -13,7 +13,7 @@ $debugging = false; // false = off; true = some; 'heavy' = everything possible;
 
 // development debugging
 if ( $debugging == 'heavy' ) {
-    var_dump($_POST);
+    var_dump( $_POST );
 }
 
 // require API libraries
@@ -43,7 +43,7 @@ $account["email"] = $_POST['email'];
 $phone = array();
 $phone["type"] = $_POST['phoneType'];
 $phone["number"] = $_POST['phoneNumber'];
-$account["phones"] = array($phone);
+$account["phones"] = array( $phone );
 
 // set up array to check for duplicates
 if ( $api_version == 2 ) {
@@ -61,7 +61,7 @@ if ( $debugging ) {
     echo "Calling for duplicates...";
 }
 if ( $debugging == 'heavy' ) {
-    echo '<pre>';print_r($duplicates);echo '</pre>';
+    echo '<pre>';print_r( $duplicates );echo '</pre>';
 }
 $checkDuplicatesResponse = $nsc->call( "getDuplicateAccounts", array( $duplicates ) );
 if ( $debugging ) {
@@ -69,12 +69,12 @@ if ( $debugging ) {
 }
 
 // did a soap fault occur?
-checkStatus($nsc);
+checkStatus( $nsc );
 
 // Output result
 if ( $debugging == 'heavy' ) {
     echo "checkDuplicatesResponse: <pre>";
-    print_r($checkDuplicatesResponse);
+    print_r( $checkDuplicatesResponse );
     echo "</pre>";
 }
 if ( $debugging ) {
@@ -87,7 +87,7 @@ if ( count( $checkDuplicatesResponse ) >= 1 ) {
         echo "Calling addAccount method...";
     }
     if ( $debugging == 'heavy' ) {
-        echo '<pre>';print_r($account);echo '</pre>';
+        echo '<pre>'; print_r( $account ); echo '</pre>';
     }
     $addAccountResponse = $nsc->call( "addAccount", array( $account, false ) );
     if ( $debugging ) {
@@ -95,12 +95,12 @@ if ( count( $checkDuplicatesResponse ) >= 1 ) {
     }
 
     // did a soap fault occur?
-    checkStatus($nsc);
+    checkStatus( $nsc );
 
     // output result
     if ( $debugging ) {
         echo "addAccount Response: <pre>";
-        print_r($addAccountResponse);
+        print_r( $addAccountResponse );
         echo "</pre>";
     }
 }
@@ -142,20 +142,20 @@ if ( $debugging ) {
     echo "Calling processTransaction method...";
 }
 if ( $debugging == 'heavy' ) {
-    echo '<pre>';print_r($request);echo '</pre>';
+    echo '<pre>'; print_r( $request ); echo '</pre>';
 }
-#$processTransactionResponse = $nsc->call("processTransaction", array($request));
+#$processTransactionResponse = $nsc->call( "processTransaction", array( $request ) );
 if ( $debugging ) {
     echo "Done<br><br>";
 }
 
 // did a soap fault occur?
-checkStatus($nsc);
+checkStatus( $nsc );
 
 // output result
 if ( $debugging ) {
     echo "addAndProcessPayment Response: <pre>";
-    print_r($processTransactionResponse);
+    print_r( $processTransactionResponse );
     echo "</pre>";
 }
 
@@ -216,7 +216,7 @@ function send_email_summary( $data, $notification_address, $checkDuplicatesRespo
 }
 
 // add sanitization functions
-function cleanInput($input) {
+function cleanInput( $input ) {
     $search = array(
         '@<script[^>]*?>.*?</script>@si',   // Strip out javascript
         '@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
@@ -224,21 +224,21 @@ function cleanInput($input) {
         '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
     );
 
-    $output = preg_replace($search, '', $input);
+    $output = preg_replace( $search, '', $input );
     return $output;
 }
 
-function sanitize($input) {
-    if (is_array($input)) {
-        foreach($input as $var=>$val) {
-            $output[$var] = sanitize($val);
+function sanitize( $input ) {
+    if ( is_array( $input ) ) {
+        foreach ( $input as $var => $val ) {
+            $output[$var] = sanitize( $val );
         }
     }
     else {
-        if (get_magic_quotes_gpc()) {
-            $input = stripslashes($input);
+        if ( get_magic_quotes_gpc() ) {
+            $input = stripslashes( $input );
         }
-        $output  = cleanInput($input);
+        $output  = cleanInput( $input );
     }
     return $output;
 }
