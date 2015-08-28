@@ -25,11 +25,16 @@ function checkStatus($nsc)
  * Start an eTapestry API session by instantiating a
  * nusoap_client instance and calling the login method.
  */
-function startEtapestrySession()
+function startEtapestrySession( $api_version )
 {
   // Set login details and initial endpoint
   require('authentication-eTap.php');
-  $endpoint = "https://sna.etapestry.com/v3messaging/service?WSDL";
+  if ($api_version == 2)
+  {
+    $endpoint = "https://sna.etapestry.com/v2messaging/service?WSDL";
+  } else {
+    $endpoint = "https://sna.etapestry.com/v3messaging/service?WSDL";
+  }
 
   // Instantiate nusoap_client
   echo "Establishing NuSoap Client...";

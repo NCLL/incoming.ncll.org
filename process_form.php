@@ -9,7 +9,7 @@ sanitize($_POST);
 var_dump($_POST);
 
 // variables
-$api_version = 3;
+$api_version = 2;
 $cost = 35;
 $notification_address = 'andrew@andrewrminion.com';
 
@@ -18,7 +18,7 @@ require_once('lib/utils.php');
 require_once('lib/nusoap.php');
 
 // instantiate nusoap_client and call login method
-$nsc = startEtapestrySession();
+$nsc = startEtapestrySession( $api_version );
 
 // define info
 $account = array();
