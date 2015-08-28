@@ -8,6 +8,18 @@ $cost = 35;
 $notification_address = 'andrew@andrewrminion.com';
 $debugging = false; // false = off; true = some; 'heavy' = everything possible;
 
+// output template if not called via AJAX
+if ( ! $_POST['ajax'] ) {
+    include('template/header.html');
+    ?>
+    <section class="main-container">
+        <section class="main wrapper clearfix">
+            <article class="main-content">
+                <h1>Thank you!</h1>
+
+    <?php
+}
+
 // development debugging
 if ( $debugging == 'heavy' ) {
     var_dump( $_POST );
@@ -165,6 +177,17 @@ if ( $debugging ) {
 send_email_summary( array_merge( $account, $request ), $notification_address, $checkDuplicatesResponse, $addAccountResponse, $processTransactionResponse );
 if ( $debugging ) {
     echo 'Done<br><br>';
+}
+
+// output template if not called via AJAX
+if ( ! $_POST['ajax'] ) {
+    ?>
+            </article>
+        </section>
+    </section>
+    <?php
+    // include template footer
+    include('template/footer.html');
 }
 
 // send summary email

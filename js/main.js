@@ -44,6 +44,29 @@ $( document ).ready( function() {
     $( ":input.next, :input[type='submit']").each( function(j) {
         $( this ).attr( 'tabindex', +( $( this ).attr( 'tabindex' ) ) - 1);
     });
+
+    // add AJAX form submission
+    $( 'form.signup' ).append( '<input type="hidden" name="ajax" value="true">' );
+    $( 'input[type="submit"]' ).on( 'click', function() {
+        var formData = $( 'form.signup' ).serializeArray();
+        $.ajax({
+            type: "POST",
+            url: "process_form.php",
+            data: formData,
+            done: function( data ) {
+                // replace last fieldset with thank-you message
+                console.log('Form submission successful');
+                console.log( data );
+            },
+            fail: function( data ) {
+                // show error message
+                console.log('Form submission failed');
+                console.log( data );
+            }
+        });
+        // prevent default form submission
+        return false;
+    });
 });
 
 // from https://github.com/dreamerslab/jquery.actual/
