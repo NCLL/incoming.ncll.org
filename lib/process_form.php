@@ -93,7 +93,7 @@ if ( $debugging ) {
 }
 
 // if no response from duplicates, add a new account
-if ( count( $checkDuplicatesResponse ) >= 1 ) {
+if ( count( $checkDuplicatesResponse ) != 1 ) {
     if ( $debugging ) {
         echo "Calling addAccount method...";
     }
