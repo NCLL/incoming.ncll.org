@@ -2,10 +2,12 @@
 Options All -Indexes
 ServerSignature Off
 
-# add rewrite rules
+# rewrite to remove file extensions
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# rewrite favicons
 RewriteRule ^favicon.ico$ /favicons/favicon.ico [L]
 RewriteRule ^manifest.json$ /favicons/manifest.json [L]
 RewriteRule ^browserconfig.xml$ /favicons/browserconfig.xml [L]
