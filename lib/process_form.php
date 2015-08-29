@@ -126,6 +126,10 @@ if ( count( $checkDuplicatesResponse ) === 1 ) {
 }
 $trans["fund"] = "General";
 $trans["amount"] = $cost;
+// if recurring gift
+//if ( $_POST['paymentSchedule'] == 'recurring' ) {
+//    $trans["recurringGiftScheduleRef"] = 'INPUT_RGS_REF' // need schedule ref
+//}
 
 // define object name (*)
 $trans["eTapestryObjectName"] = "Gift";
@@ -155,7 +159,11 @@ if ( $debugging ) {
 if ( $debugging == 'heavy' ) {
     echo '<pre>'; print_r( $request ); echo '</pre>';
 }
-$processTransactionResponse = $nsc->call( "processTransaction", array( $request ) );
+//if ( $_POST['paymentSchedule'] == 'recurring' ) {
+//    $processTransactionResponse = $nsc->call( "addRecurringGift", array( $trans, false ) );
+//} else {
+    $processTransactionResponse = $nsc->call( "processTransaction", array( $request ) );
+//}
 if ( $debugging ) {
     echo "Done"."\n\n";
 }
