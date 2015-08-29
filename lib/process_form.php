@@ -16,7 +16,6 @@ if ( ! $_POST['ajax'] ) {
         <section class="main wrapper clearfix">
             <article class="main-content">
                 <h1>Thank you!</h1>
-
     <?php
 }
 
@@ -185,6 +184,8 @@ if ( $debugging ) {
 // output template if not called via AJAX
 if ( ! $_POST['ajax'] ) {
     ?>
+                <p>We&rsquo;ll be in touch soon.</p>
+                <p>In the meantime, check out <a href="http://www.ncll.org/">our website</a>.</p>
             </article>
         </section>
     </section>
