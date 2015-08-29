@@ -59,7 +59,7 @@ function startEtapestrySession( $api_version, $debugging )
   }
 
   // Did an error occur?
-  checkStatus($nsc);
+  checkStatus($nsc, $ajax);
 
   // Invoke login method
   if ($debugging)
@@ -73,7 +73,7 @@ function startEtapestrySession( $api_version, $debugging )
   }
 
   // Did a soap fault occur?
-  checkStatus($nsc);
+  checkStatus($nsc, $ajax);
 
   // Determine if the login method returned a value...this will occur
   // when the database you are trying to access is located at a different
@@ -88,7 +88,7 @@ function startEtapestrySession( $api_version, $debugging )
     echo "Done\n\n";
 
     // Did an error occur?
-    checkStatus($nsc);
+    checkStatus($nsc, $ajax);
 
     // Invoke login method
     echo "Calling login method...";
@@ -96,7 +96,7 @@ function startEtapestrySession( $api_version, $debugging )
     echo "Done\n\n";
 
     // Did a soap fault occur?
-    checkStatus($nsc);
+    checkStatus($nsc, $ajax);
   }
 
   // Output results
