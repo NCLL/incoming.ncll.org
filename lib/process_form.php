@@ -193,6 +193,10 @@ if ( ! $_POST['ajax'] ) {
     // include template footer
     include('../template/footer.html');
 }
+// or return JSON
+else {
+    echo json_encode( array( 'checkDuplicatesResponse' => $checkDuplicatesResponse, 'addAccountResponse' => $addAccountResponse, 'processTransactionResponse' => $processTransactionResponse ) );
+}
 
 // return successful JSON response
 
