@@ -5,7 +5,7 @@ sanitize( $_POST );
 // variables
 $api_version = 2;
 $cost = 1;
-$notification_address = 'andrew@andrewrminion.com';
+$notification_address = 'andrew@andrewrminion.com, arife@gibbsfirm.com';
 $debugging = false; // false = off; 'true' = some; 'heavy' = everything possible;
 
 // output template if not called via AJAX
