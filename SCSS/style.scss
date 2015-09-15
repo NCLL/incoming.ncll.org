@@ -238,6 +238,12 @@ h3, h5 { font-variant: small-caps; }
 .main-form h2:first-child { margin-top: 0; }
 
 label {
+    &:not(.radio) {
+        text-transform: uppercase;
+        font-size: ms(-1);
+        letter-spacing: .075em;
+    }
+
     &.radio {
         display: inline-block;
         margin-right: 1em;
