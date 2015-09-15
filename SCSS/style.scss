@@ -345,7 +345,7 @@ fieldset {
     &.visa { background-image: url('/SVG/compressed/visa.svg'); }
 
     &.valid { color: green; }
-    &.invalid:not(:focus) { color: red; }
+    &.invalid.valid-length { color: red; }
 }
 
 /* ===============

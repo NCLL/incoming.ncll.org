@@ -49,6 +49,13 @@ $( document ).ready( function() {
     $( '#cardnumber' ).validateCreditCard(function( result ) {
         var cardName = result.card_type.name || '';
         $( '#cardnumber' ).removeClass().addClass( cardName );
+
+        if ( result.length_valid ) {
+            $( '#cardnumber' ).addClass( 'valid-length' );
+        } else {
+            $( '#cardnumber' ).removeClass( 'valid-length' );
+        }
+
         if ( result.valid ) {
             $( '#cardnumber' ).addClass( 'valid' );
         } else {
