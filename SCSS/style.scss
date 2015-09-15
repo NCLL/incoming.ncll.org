@@ -167,8 +167,8 @@ h3, h5 { font-variant: small-caps; }
 }
 
 .main-form {
-    background: url('/img/form-background.png') no-repeat bottom center;
-    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iMTYwMCIgdmlld0JveD0iMCAwIDgwMCAxNjAwIj48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI0MDkuMDAxIiBjeT0iLTQuMDgiIHI9IjE2MzUuMzYzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNTk3OUEzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMzQ0NzYwIi8+PC9yYWRpYWxHcmFkaWVudD48cGF0aCBmaWxsPSJ1cmwoI2EpIiBkPSJNNDAwIDE2MDBMMCAxNTUzVjBoODAwdjE1NTMiLz48L3N2Zz4=) no-repeat bottom center / cover;
+    background: $primary_color url('/img/form-background.png') no-repeat bottom center;
+    background: $primary_color url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iMTYwMCIgdmlld0JveD0iMCAwIDgwMCAxNjAwIj48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI0MDkuMDAxIiBjeT0iLTQuMDgiIHI9IjE2MzUuMzYzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNTk3OUEzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMzQ0NzYwIi8+PC9yYWRpYWxHcmFkaWVudD48cGF0aCBmaWxsPSJ1cmwoI2EpIiBkPSJNNDAwIDE2MDBMMCAxNTUzVjBoODAwdjE1NTMiLz48L3N2Zz4=) no-repeat bottom center / cover;
     padding: 1em 1em 6em;
     margin: 2em 1em -4em;
     @media only screen and (min-width: 768px) {
