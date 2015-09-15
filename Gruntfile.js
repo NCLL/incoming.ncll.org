@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         },
         svgIcons: {
             files: "SVG/raw/*.svg",
-            tasks: ['svgmin', 'svgstore'],
+            tasks: ['svgmin'],
         },
         images: {
             files: ['img/*.{jpg,png,gif,svg}'],
@@ -62,18 +62,27 @@ module.exports = function (grunt) {
             }
         }
     },
-    svgstore: {
+    svgmin: {
         options: {
-            prefix : 'icon-', // This will prefix each ID
-            svg: { // will add and overide the the default xmlns="http://www.w3.org/2000/svg" attribute to the resulting SVG
-                viewBox : '0 0 100 100',
-                xmlns: 'http://www.w3.org/2000/svg',
-            },
+            plugins: [
+                { removeViewBox: false },
+                { removeUselessStrokeAndFill: false },
+            ]
         },
-        default: {
-            files: {
-                'images/icons.svg': ['SVG/compressed/*.svg'],
-            },
+        creditCards: {
+            files: [{
+                expand: true,
+                cwd: 'SVG/raw',
+                src: '*.svg',
+                dest: 'SVG/compressed',
+            }],
+        },
+        others: {
+            files: [{
+                expand: true,
+                src: 'SVG/*.svg',
+                dest: 'images/',
+            }],
         },
     },
     imagemin: {
@@ -99,7 +108,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-svgstore');
+    grunt.loadNpmTasks('grunt-svgmin');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-newer');
