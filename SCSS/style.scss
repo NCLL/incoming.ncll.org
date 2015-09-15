@@ -168,7 +168,7 @@ h3, h5 { font-variant: small-caps; }
 
 .main-form {
     background: url('/img/form-background.png') no-repeat bottom center;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1600" viewBox="0 0 800 1600"><radialGradient id="a" cx="409.001" cy="-4.08" r="1635.363" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5979A3"/><stop offset="1" stop-color="#344760"/></radialGradient><path fill="url(#a)" d="M400 1600L0 1553V0h800v1553"/></svg>') no-repeat bottom center / cover;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iMTYwMCIgdmlld0JveD0iMCAwIDgwMCAxNjAwIj48cmFkaWFsR3JhZGllbnQgaWQ9ImEiIGN4PSI0MDkuMDAxIiBjeT0iLTQuMDgiIHI9IjE2MzUuMzYzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNTk3OUEzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMzQ0NzYwIi8+PC9yYWRpYWxHcmFkaWVudD48cGF0aCBmaWxsPSJ1cmwoI2EpIiBkPSJNNDAwIDE2MDBMMCAxNTUzVjBoODAwdjE1NTMiLz48L3N2Zz4=) no-repeat bottom center / cover;
     padding: 1em 1em 6em;
     margin: 2em 1em -4em;
     @media only screen and (min-width: 768px) {
