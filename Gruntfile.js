@@ -59,6 +59,7 @@ module.exports = function (grunt) {
             options: {
                 watchTask: true,
                 proxy: "incoming.ncll.dev",
+                tunnel: true,
             }
         }
     },
