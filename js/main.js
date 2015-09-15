@@ -47,7 +47,13 @@ $( document ).ready( function() {
 
     // validate credit card number
     $( '#cardnumber' ).validateCreditCard(function( result ) {
-        $( '#cardnumber' ).removeClass().addClass( result.card_type.name ).addClass( result.card_type.valid );
+        var cardName = result.card_type.name || '';
+        $( '#cardnumber' ).removeClass().addClass( cardName );
+        if ( result.valid ) {
+            $( '#cardnumber' ).addClass( 'valid' );
+        } else {
+            $( '#cardnumber' ).addClass( 'invalid' );
+        }
     });
 
     // submit form via AJAX
