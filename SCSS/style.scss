@@ -327,6 +327,28 @@ fieldset {
 }
 
 /* ===============
+    Card icons
+   =============== */
+
+#cardnumber {
+    background-size: 9%;
+    background-repeat: no-repeat;
+    background-position: 98%;
+    transition: all .3s ease;
+
+    &.amex { background-image: url('/SVG/compressed/amex.svg'); }
+    &.diners_club_carte_blanche, &.diners_club_international { background-image: url('/SVG/compressed/diners.svg'); }
+    &.discover { background-image: url('/SVG/compressed/discover.svg'); }
+    &.jcb { background-image: url('/SVG/compressed/jcb.svg'); }
+    &.maestro { background-image: url('/SVG/compressed/maestro.svg'); }
+    &.mastercard { background-image: url('/SVG/compressed/mastercard.svg'); }
+    &.visa { background-image: url('/SVG/compressed/visa.svg'); }
+
+    &.valid { color: green; }
+    &.invalid:not(:focus) { color: red; }
+}
+
+/* ===============
     IE Fixes
    =============== */
 
