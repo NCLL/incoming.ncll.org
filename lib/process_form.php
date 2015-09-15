@@ -136,7 +136,7 @@ $trans["eTapestryObjectName"] = "Gift";
 
 // define credit card info
 $cc = array();
-$cc["number"] = $_POST['cardnumber'];
+$cc["number"] = str_replace( ' ', '', $_POST['cardnumber'] );
 $cc["expirationMonth"] = $_POST['cc-exp-month'];
 $cc["expirationYear"] = $_POST['cc-exp-year'];
 
